@@ -6,26 +6,15 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
-
-interface Product {
-  id: number;
-  name: string;
-  brand: string;
-  category: string;
-  price: number;
-  power: string;
-  voltage: string;
-  weight: string;
-  description: string;
-  image: string;
-  inStock: boolean;
-}
+import { Product, products } from '@/data/ProductData';
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
-  const product = location.state?.product as Product;
+  const productFromState = location.state?.product as Product;
+  const productFromData = products.find(p => p.id === Number(id));
+  const product = productFromState || productFromData;
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {

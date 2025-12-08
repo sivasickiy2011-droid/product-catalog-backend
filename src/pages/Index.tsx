@@ -1,401 +1,11 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
-import ProductCard from '@/components/ProductCard';
-import ProductFilters from '@/components/ProductFilters';
-import ShoppingCart from '@/components/ShoppingCart';
 import CompareDialog from '@/components/CompareDialog';
-
-interface Product {
-  id: number;
-  name: string;
-  brand: string;
-  category: string;
-  price: number;
-  power: string;
-  voltage: string;
-  weight: string;
-  description: string;
-  image: string;
-  inStock: boolean;
-}
-
-interface CartItem extends Product {
-  quantity: number;
-}
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Дрель-шуруповерт аккумуляторная',
-    brand: 'Bosch',
-    category: 'Электроинструменты',
-    price: 12990,
-    power: '1800 Вт',
-    voltage: '18 В',
-    weight: '1.5 кг',
-    description: 'Профессиональный инструмент для сверления и завинчивания',
-    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: 'Перфоратор SDS-Plus',
-    brand: 'Makita',
-    category: 'Электроинструменты',
-    price: 18500,
-    power: '2500 Вт',
-    voltage: '220 В',
-    weight: '3.2 кг',
-    description: 'Мощный перфоратор для бетона и камня',
-    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: 'Болгарка угловая шлифмашина',
-    brand: 'DeWalt',
-    category: 'Электроинструменты',
-    price: 8990,
-    power: '2000 Вт',
-    voltage: '220 В',
-    weight: '2.1 кг',
-    description: 'Компактная УШМ для резки и шлифовки',
-    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 4,
-    name: 'Светодиодная лампа E27 15W',
-    brand: 'Philips',
-    category: 'Освещение',
-    price: 450,
-    power: '15 Вт',
-    voltage: '220 В',
-    weight: '0.05 кг',
-    description: 'Энергосберегающая LED лампа теплый белый',
-    image: 'https://images.unsplash.com/photo-1602080858428-57174f9431cf?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 5,
-    name: 'Прожектор светодиодный 50W',
-    brand: 'Osram',
-    category: 'Освещение',
-    price: 2490,
-    power: '50 Вт',
-    voltage: '220 В',
-    weight: '1.2 кг',
-    description: 'Уличный IP65 светодиодный прожектор',
-    image: 'https://images.pexels.com/photos/3683056/pexels-photo-3683056.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 6,
-    name: 'Люстра потолочная 3 плафона',
-    brand: 'Лючия',
-    category: 'Освещение',
-    price: 5990,
-    power: '60 Вт',
-    voltage: '220 В',
-    weight: '2.5 кг',
-    description: 'Современная потолочная люстра для гостиной',
-    image: 'https://images.unsplash.com/photo-1545318813-f0447d1e1ac3?w=800&q=80',
-    inStock: false,
-  },
-  {
-    id: 7,
-    name: 'Кабель ВВГ 3x2.5 мм² (100м)',
-    brand: 'Камкабель',
-    category: 'Кабели',
-    price: 3200,
-    power: '—',
-    voltage: '220 В',
-    weight: '15 кг',
-    description: 'Силовой кабель для скрытой проводки',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 8,
-    name: 'Удлинитель 5 розеток 3м',
-    brand: 'Эра',
-    category: 'Кабели',
-    price: 890,
-    power: '3500 Вт',
-    voltage: '220 В',
-    weight: '0.6 кг',
-    description: 'Сетевой фильтр с защитой от перегрузки',
-    image: 'https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&q=80',
-    inStock: true,
-  },
-  {
-    id: 9,
-    name: 'Лобзик электрический',
-    brand: 'Bosch',
-    category: 'Электроинструменты',
-    price: 7890,
-    power: '650 Вт',
-    voltage: '220 В',
-    weight: '2.3 кг',
-    description: 'Электролобзик для фигурной резки дерева и металла',
-    image: 'https://images.pexels.com/photos/5691621/pexels-photo-5691621.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 10,
-    name: 'Шуруповерт ударный',
-    brand: 'Makita',
-    category: 'Электроинструменты',
-    price: 9990,
-    power: '180 Нм',
-    voltage: '18 В',
-    weight: '1.8 кг',
-    description: 'Ударный шуруповерт с бесщеточным двигателем',
-    image: 'https://images.pexels.com/photos/5691589/pexels-photo-5691589.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 11,
-    name: 'Циркулярная пила',
-    brand: 'DeWalt',
-    category: 'Электроинструменты',
-    price: 14500,
-    power: '1800 Вт',
-    voltage: '220 В',
-    weight: '4.5 кг',
-    description: 'Дисковая пила для продольного и поперечного пиления',
-    image: 'https://images.pexels.com/photos/8961480/pexels-photo-8961480.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 12,
-    name: 'Фрезер ручной',
-    brand: 'Makita',
-    category: 'Электроинструменты',
-    price: 11200,
-    power: '1200 Вт',
-    voltage: '220 В',
-    weight: '3.1 кг',
-    description: 'Универсальный фрезер для обработки дерева',
-    image: 'https://images.pexels.com/photos/5691584/pexels-photo-5691584.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 13,
-    name: 'Рубанок электрический',
-    brand: 'Bosch',
-    category: 'Электроинструменты',
-    price: 6790,
-    power: '750 Вт',
-    voltage: '220 В',
-    weight: '2.7 кг',
-    description: 'Электрорубанок для строгания древесины',
-    image: 'https://images.pexels.com/photos/5691611/pexels-photo-5691611.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 14,
-    name: 'Гайковерт ударный',
-    brand: 'DeWalt',
-    category: 'Электроинструменты',
-    price: 15900,
-    power: '950 Нм',
-    voltage: '18 В',
-    weight: '2.2 кг',
-    description: 'Аккумуляторный гайковерт высокого крутящего момента',
-    image: 'https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 15,
-    name: 'Набор светодиодных ламп 10шт',
-    brand: 'Philips',
-    category: 'Освещение',
-    price: 3200,
-    power: '10 Вт',
-    voltage: '220 В',
-    weight: '0.5 кг',
-    description: 'Комплект энергосберегающих LED ламп E27',
-    image: 'https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 16,
-    name: 'Светильник потолочный LED',
-    brand: 'Osram',
-    category: 'Освещение',
-    price: 4990,
-    power: '36 Вт',
-    voltage: '220 В',
-    weight: '1.8 кг',
-    description: 'Современный LED светильник с пультом управления',
-    image: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 17,
-    name: 'Настольная лампа LED',
-    brand: 'Лючия',
-    category: 'Освещение',
-    price: 1890,
-    power: '12 Вт',
-    voltage: '220 В',
-    weight: '0.8 кг',
-    description: 'Регулируемая настольная лампа с диммером',
-    image: 'https://images.pexels.com/photos/545012/pexels-photo-545012.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 18,
-    name: 'Светодиодная лента RGB 5м',
-    brand: 'Osram',
-    category: 'Освещение',
-    price: 2790,
-    power: '72 Вт',
-    voltage: '12 В',
-    weight: '0.4 кг',
-    description: 'Гибкая RGB лента с пультом и блоком питания',
-    image: 'https://images.pexels.com/photos/4916189/pexels-photo-4916189.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 19,
-    name: 'Бра настенное двухрожковое',
-    brand: 'Лючия',
-    category: 'Освещение',
-    price: 3490,
-    power: '40 Вт',
-    voltage: '220 В',
-    weight: '1.2 кг',
-    description: 'Элегантное настенное бра в современном стиле',
-    image: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: false,
-  },
-  {
-    id: 20,
-    name: 'Провод ШВВП 2x0.75 (50м)',
-    brand: 'Камкабель',
-    category: 'Кабели',
-    price: 890,
-    power: '—',
-    voltage: '220 В',
-    weight: '3.5 кг',
-    description: 'Шнур для подключения бытовых приборов',
-    image: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 21,
-    name: 'Розетка двойная с заземлением',
-    brand: 'Эра',
-    category: 'Кабели',
-    price: 320,
-    power: '3500 Вт',
-    voltage: '220 В',
-    weight: '0.15 кг',
-    description: 'Встраиваемая розетка с защитными шторками',
-    image: 'https://images.pexels.com/photos/8961427/pexels-photo-8961427.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 22,
-    name: 'Выключатель одноклавишный',
-    brand: 'Эра',
-    category: 'Кабели',
-    price: 180,
-    power: '—',
-    voltage: '220 В',
-    weight: '0.08 кг',
-    description: 'Встраиваемый выключатель скрытой установки',
-    image: 'https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 23,
-    name: 'Кабель-канал 40x25 мм (2м)',
-    brand: 'Камкабель',
-    category: 'Кабели',
-    price: 450,
-    power: '—',
-    voltage: '—',
-    weight: '0.6 кг',
-    description: 'Пластиковый короб для прокладки проводов',
-    image: 'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 24,
-    name: 'УЗО 30мА 32А',
-    brand: 'Эра',
-    category: 'Кабели',
-    price: 1890,
-    power: '—',
-    voltage: '220 В',
-    weight: '0.25 кг',
-    description: 'Устройство защитного отключения для электросети',
-    image: 'https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 25,
-    name: 'Автомат дифференциальный 16А',
-    brand: 'Эра',
-    category: 'Кабели',
-    price: 2290,
-    power: '—',
-    voltage: '220 В',
-    weight: '0.3 кг',
-    description: 'Дифференциальный автомат для электрощита',
-    image: 'https://images.pexels.com/photos/8961427/pexels-photo-8961427.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 26,
-    name: 'Тепловая пушка 3кВт',
-    brand: 'Ballu',
-    category: 'Электроинструменты',
-    price: 4990,
-    power: '3000 Вт',
-    voltage: '220 В',
-    weight: '3.8 кг',
-    description: 'Электрическая тепловая пушка для обогрева помещений',
-    image: 'https://images.pexels.com/photos/5691594/pexels-photo-5691594.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 27,
-    name: 'Компрессор воздушный',
-    brand: 'Makita',
-    category: 'Электроинструменты',
-    price: 18900,
-    power: '1500 Вт',
-    voltage: '220 В',
-    weight: '24 кг',
-    description: 'Поршневой компрессор с ресивером 50л',
-    image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-  {
-    id: 28,
-    name: 'Мультитул реноватор',
-    brand: 'Bosch',
-    category: 'Электроинструменты',
-    price: 8490,
-    power: '300 Вт',
-    voltage: '220 В',
-    weight: '1.6 кг',
-    description: 'Многофункциональный инструмент для ремонта',
-    image: 'https://images.pexels.com/photos/5691589/pexels-photo-5691589.jpeg?auto=compress&cs=tinysrgb&w=800',
-    inStock: true,
-  },
-];
+import CatalogHeader from '@/components/CatalogHeader';
+import CatalogContent from '@/components/CatalogContent';
+import { Product, CartItem, products } from '@/data/ProductData';
 
 const Index = () => {
-  const navigate = useNavigate();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [compareList, setCompareList] = useState<Product[]>([]);
   const [showCompare, setShowCompare] = useState(false);
@@ -464,102 +74,42 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="fixed inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-card/40 backdrop-blur-xl supports-[backdrop-filter]:bg-card/40">
-        <div className="container flex h-20 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
-              <Icon name="Zap" className="h-8 w-8 text-primary relative" />
-            </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">ЭлектроМаркет</h1>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hover:bg-white/10 transition-all"
-              onClick={() => navigate('/profile')}
-            >
-              <Icon name="User" className="h-4 w-4 mr-2" />
-              Профиль
-            </Button>
+      
+      <CatalogHeader
+        cart={cart}
+        totalItems={totalItems}
+        totalPrice={totalPrice}
+        compareListLength={compareList.length}
+        onUpdateQuantity={updateQuantity}
+        onRemoveFromCart={removeFromCart}
+        onShowCompare={() => setShowCompare(true)}
+      />
 
-            <Button
-              variant="outline"
-              size="sm"
-              className="relative hover:bg-white/10 border-white/10 transition-all"
-              onClick={() => setShowCompare(true)}
-              disabled={compareList.length === 0}
-            >
-              <Icon name="GitCompare" className="h-4 w-4 mr-2" />
-              Сравнить
-              {compareList.length > 0 && (
-                <Badge className="ml-2 h-5 w-5 rounded-full p-0 flex items-center justify-center">
-                  {compareList.length}
-                </Badge>
-              )}
-            </Button>
-
-            <ShoppingCart
-              cart={cart}
-              totalItems={totalItems}
-              totalPrice={totalPrice}
-              onUpdateQuantity={updateQuantity}
-              onRemoveFromCart={removeFromCart}
-            />
-          </div>
-        </div>
-      </header>
-
-      <main className="container py-12 relative">
-        <div className="mb-12 space-y-8 animate-slide-up">
-          <div>
-            <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">Каталог электротоваров</h2>
-            <p className="text-lg text-muted-foreground">Широкий выбор качественного оборудования и материалов</p>
-          </div>
-
-          <ProductFilters
-            selectedCategory={selectedCategory}
-            selectedBrand={selectedBrand}
-            priceRange={priceRange}
-            categories={categories}
-            brands={brands}
-            onCategoryChange={setSelectedCategory}
-            onBrandChange={setSelectedBrand}
-            onPriceRangeChange={setPriceRange}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              index={index}
-              onAddToCart={addToCart}
-              onToggleCompare={toggleCompare}
-              isInCompare={!!compareList.find(p => p.id === product.id)}
-              onProductClick={(p) => navigate(`/product/${p.id}`, { state: { product: p } })}
-            />
-          ))}
-        </div>
-
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <Icon name="Search" className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Товары не найдены</h3>
-            <p className="text-muted-foreground">Попробуйте изменить параметры фильтров</p>
-          </div>
-        )}
-      </main>
+      <CatalogContent
+        filteredProducts={filteredProducts}
+        compareList={compareList}
+        selectedCategory={selectedCategory}
+        selectedBrand={selectedBrand}
+        priceRange={priceRange}
+        categories={categories}
+        brands={brands}
+        onCategoryChange={setSelectedCategory}
+        onBrandChange={setSelectedBrand}
+        onPriceRangeChange={setPriceRange}
+        onResetFilters={() => {
+          setSelectedCategory('all');
+          setSelectedBrand('all');
+          setPriceRange([0, 20000]);
+        }}
+        onAddToCart={addToCart}
+        onToggleCompare={toggleCompare}
+      />
 
       <CompareDialog
+        products={compareList}
         open={showCompare}
-        compareList={compareList}
         onOpenChange={setShowCompare}
-        onToggleCompare={toggleCompare}
-        onAddToCart={addToCart}
+        onRemoveProduct={(id) => setCompareList(prev => prev.filter(p => p.id !== id))}
       />
     </div>
   );
