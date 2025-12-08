@@ -1,13 +1,12 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Slider } from '@/components/ui/slider';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
+import ProductCard from '@/components/ProductCard';
+import ProductFilters from '@/components/ProductFilters';
+import ShoppingCart from '@/components/ShoppingCart';
+import CompareDialog from '@/components/CompareDialog';
 
 interface Product {
   id: number;
@@ -226,78 +225,13 @@ const Index = () => {
               )}
             </Button>
 
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="default" size="sm" className="relative">
-                  <Icon name="ShoppingCart" className="h-4 w-4 mr-2" />
-                  Корзина
-                  {totalItems > 0 && (
-                    <Badge variant="secondary" className="ml-2 h-5 w-5 rounded-full p-0 flex items-center justify-center">
-                      {totalItems}
-                    </Badge>
-                  )}
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="w-full sm:max-w-lg">
-                <SheetHeader>
-                  <SheetTitle>Корзина покупок</SheetTitle>
-                  <SheetDescription>
-                    {totalItems > 0 ? `${totalItems} товаров на сумму ${totalPrice.toLocaleString()} ₽` : 'Корзина пуста'}
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="mt-8 space-y-4">
-                  {cart.map(item => (
-                    <Card key={item.id} className="animate-fade-in">
-                      <CardContent className="p-4">
-                        <div className="flex gap-4">
-                          <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
-                          <div className="flex-1">
-                            <h4 className="font-medium text-sm">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">{item.price.toLocaleString()} ₽</p>
-                            <div className="flex items-center gap-2 mt-2">
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              >
-                                <Icon name="Minus" className="h-3 w-3" />
-                              </Button>
-                              <span className="w-8 text-center text-sm">{item.quantity}</span>
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              >
-                                <Icon name="Plus" className="h-3 w-3" />
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                className="ml-auto"
-                                onClick={() => removeFromCart(item.id)}
-                              >
-                                <Icon name="Trash2" className="h-4 w-4 text-destructive" />
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-                {cart.length > 0 && (
-                  <div className="mt-6 space-y-4">
-                    <div className="flex justify-between text-lg font-bold">
-                      <span>Итого:</span>
-                      <span>{totalPrice.toLocaleString()} ₽</span>
-                    </div>
-                    <Button className="w-full" size="lg">
-                      Оформить заказ
-                    </Button>
-                  </div>
-                )}
-              </SheetContent>
-            </Sheet>
+            <ShoppingCart
+              cart={cart}
+              totalItems={totalItems}
+              totalPrice={totalPrice}
+              onUpdateQuantity={updateQuantity}
+              onRemoveFromCart={removeFromCart}
+            />
           </div>
         </div>
       </header>
@@ -309,114 +243,28 @@ const Index = () => {
             <p className="text-muted-foreground">Широкий выбор качественного оборудования и материалов</p>
           </div>
 
-          <Card className="p-6">
-            <h3 className="font-semibold mb-4 flex items-center gap-2">
-              <Icon name="SlidersHorizontal" className="h-5 w-5" />
-              Фильтры
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="text-sm font-medium mb-2 block">Категория</label>
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Все категории</SelectItem>
-                    {categories.filter(c => c !== 'all').map(cat => (
-                      <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium mb-2 block">Бренд</label>
-                <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Все бренды</SelectItem>
-                    {brands.filter(b => b !== 'all').map(brand => (
-                      <SelectItem key={brand} value={brand}>{brand}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium mb-2 block">
-                  Цена: {priceRange[0]} - {priceRange[1]} ₽
-                </label>
-                <Slider
-                  value={priceRange}
-                  onValueChange={setPriceRange}
-                  max={20000}
-                  step={100}
-                  className="mt-2"
-                />
-              </div>
-            </div>
-          </Card>
+          <ProductFilters
+            selectedCategory={selectedCategory}
+            selectedBrand={selectedBrand}
+            priceRange={priceRange}
+            categories={categories}
+            brands={brands}
+            onCategoryChange={setSelectedCategory}
+            onBrandChange={setSelectedBrand}
+            onPriceRangeChange={setPriceRange}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => (
-            <Card key={product.id} className="flex flex-col animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
-              <CardHeader className="p-0">
-                <div className="relative">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-48 object-cover rounded-t-lg"
-                  />
-                  {!product.inStock && (
-                    <Badge variant="destructive" className="absolute top-2 right-2">
-                      Нет в наличии
-                    </Badge>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1 p-4">
-                <Badge variant="outline" className="mb-2">{product.brand}</Badge>
-                <CardTitle className="text-base mb-2 line-clamp-2">{product.name}</CardTitle>
-                <CardDescription className="text-xs mb-3 line-clamp-2">{product.description}</CardDescription>
-                <div className="space-y-1 text-xs text-muted-foreground">
-                  <div className="flex justify-between">
-                    <span>Мощность:</span>
-                    <span className="font-medium">{product.power}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Напряжение:</span>
-                    <span className="font-medium">{product.voltage}</span>
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter className="p-4 pt-0 flex-col gap-2">
-                <div className="flex items-center justify-between w-full mb-2">
-                  <span className="text-2xl font-bold text-primary">{product.price.toLocaleString()} ₽</span>
-                </div>
-                <div className="flex gap-2 w-full">
-                  <Button
-                    className="flex-1"
-                    onClick={() => addToCart(product)}
-                    disabled={!product.inStock}
-                  >
-                    <Icon name="ShoppingCart" className="h-4 w-4 mr-2" />
-                    В корзину
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => toggleCompare(product)}
-                    className={compareList.find(p => p.id === product.id) ? 'bg-primary text-primary-foreground' : ''}
-                  >
-                    <Icon name="GitCompare" className="h-4 w-4" />
-                  </Button>
-                </div>
-              </CardFooter>
-            </Card>
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={index}
+              onAddToCart={addToCart}
+              onToggleCompare={toggleCompare}
+              isInCompare={!!compareList.find(p => p.id === product.id)}
+            />
           ))}
         </div>
 
@@ -429,112 +277,13 @@ const Index = () => {
         )}
       </main>
 
-      <Dialog open={showCompare} onOpenChange={setShowCompare}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Icon name="GitCompare" className="h-5 w-5" />
-              Сравнение товаров
-            </DialogTitle>
-            <DialogDescription>
-              Сравните характеристики выбранных товаров
-            </DialogDescription>
-          </DialogHeader>
-          {compareList.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left p-4 font-semibold">Характеристика</th>
-                    {compareList.map(product => (
-                      <th key={product.id} className="p-4">
-                        <div className="space-y-2">
-                          <img src={product.image} alt={product.name} className="w-full h-32 object-cover rounded" />
-                          <p className="text-sm font-medium text-left">{product.name}</p>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => toggleCompare(product)}
-                            className="w-full"
-                          >
-                            <Icon name="X" className="h-4 w-4 mr-1" />
-                            Убрать
-                          </Button>
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="p-4 font-medium">Бренд</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center">{product.brand}</td>
-                    ))}
-                  </tr>
-                  <tr className="border-b bg-muted/30">
-                    <td className="p-4 font-medium">Цена</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center font-bold text-primary">
-                        {product.price.toLocaleString()} ₽
-                      </td>
-                    ))}
-                  </tr>
-                  <tr className="border-b">
-                    <td className="p-4 font-medium">Мощность</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center">{product.power}</td>
-                    ))}
-                  </tr>
-                  <tr className="border-b bg-muted/30">
-                    <td className="p-4 font-medium">Напряжение</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center">{product.voltage}</td>
-                    ))}
-                  </tr>
-                  <tr className="border-b">
-                    <td className="p-4 font-medium">Вес</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center">{product.weight}</td>
-                    ))}
-                  </tr>
-                  <tr className="border-b bg-muted/30">
-                    <td className="p-4 font-medium">Наличие</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4 text-center">
-                        {product.inStock ? (
-                          <Badge variant="default">В наличии</Badge>
-                        ) : (
-                          <Badge variant="destructive">Нет</Badge>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <td className="p-4 font-medium">Действие</td>
-                    {compareList.map(product => (
-                      <td key={product.id} className="p-4">
-                        <Button
-                          className="w-full"
-                          onClick={() => addToCart(product)}
-                          disabled={!product.inStock}
-                        >
-                          В корзину
-                        </Button>
-                      </td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <Icon name="GitCompare" className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-              <p className="text-muted-foreground">Выберите товары для сравнения</p>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <CompareDialog
+        open={showCompare}
+        compareList={compareList}
+        onOpenChange={setShowCompare}
+        onToggleCompare={toggleCompare}
+        onAddToCart={addToCart}
+      />
     </div>
   );
 };
