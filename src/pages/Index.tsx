@@ -38,7 +38,7 @@ const products: Product[] = [
     voltage: '18 В',
     weight: '1.5 кг',
     description: 'Профессиональный инструмент для сверления и завинчивания',
-    image: 'https://placehold.co/400x300/0EA5E9/ffffff?text=Дрель',
+    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
     inStock: true,
   },
   {
@@ -51,7 +51,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '3.2 кг',
     description: 'Мощный перфоратор для бетона и камня',
-    image: 'https://placehold.co/400x300/0EA5E9/ffffff?text=Перфоратор',
+    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
     inStock: true,
   },
   {
@@ -64,7 +64,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '2.1 кг',
     description: 'Компактная УШМ для резки и шлифовки',
-    image: 'https://placehold.co/400x300/0EA5E9/ffffff?text=Болгарка',
+    image: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80',
     inStock: true,
   },
   {
@@ -77,7 +77,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '0.05 кг',
     description: 'Энергосберегающая LED лампа теплый белый',
-    image: 'https://placehold.co/400x300/FCD34D/1A1F2C?text=Лампа',
+    image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800&q=80',
     inStock: true,
   },
   {
@@ -90,7 +90,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '1.2 кг',
     description: 'Уличный IP65 светодиодный прожектор',
-    image: 'https://placehold.co/400x300/FCD34D/1A1F2C?text=Прожектор',
+    image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&q=80',
     inStock: true,
   },
   {
@@ -103,7 +103,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '2.5 кг',
     description: 'Современная потолочная люстра для гостиной',
-    image: 'https://placehold.co/400x300/FCD34D/1A1F2C?text=Люстра',
+    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
     inStock: false,
   },
   {
@@ -116,7 +116,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '15 кг',
     description: 'Силовой кабель для скрытой проводки',
-    image: 'https://placehold.co/400x300/8B5CF6/ffffff?text=Кабель',
+    image: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80',
     inStock: true,
   },
   {
@@ -129,7 +129,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '0.6 кг',
     description: 'Сетевой фильтр с защитой от перегрузки',
-    image: 'https://placehold.co/400x300/8B5CF6/ffffff?text=Удлинитель',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     inStock: true,
   },
 ];
@@ -280,6 +280,7 @@ const Index = () => {
               onAddToCart={addToCart}
               onToggleCompare={toggleCompare}
               isInCompare={!!compareList.find(p => p.id === product.id)}
+              onProductClick={(p) => navigate(`/product/${p.id}`, { state: { product: p } })}
             />
           ))}
         </div>

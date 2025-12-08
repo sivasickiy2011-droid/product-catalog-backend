@@ -23,9 +23,10 @@ interface ProductCardProps {
   onAddToCart: (product: Product) => void;
   onToggleCompare: (product: Product) => void;
   isInCompare: boolean;
+  onProductClick: (product: Product) => void;
 }
 
-const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare }: ProductCardProps) => {
+const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare, onProductClick }: ProductCardProps) => {
   const getCategoryColor = () => {
     switch (product.category) {
       case 'Электроинструменты':
@@ -53,11 +54,22 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
   };
 
   return (
-    <Card className="group flex flex-col animate-fade-in hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 overflow-hidden bg-gradient-to-br from-card to-card/50 border-white/10" style={{ animationDelay: `${index * 0.05}s` }}>
+    <Card className="group flex flex-col animate-fade-in hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 overflow-hidden bg-gradient-to-br from-card to-card/50 border-white/10 cursor-pointer" style={{ animationDelay: `${index * 0.05}s` }}>
       <CardHeader className="p-0">
         <div className="relative overflow-hidden">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-56 object-cover transition-all duration-500 group-hover:scale-110"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              const fallback = target.nextElementSibling as HTMLDivElement;
+              if (fallback) fallback.style.display = 'flex';
+            }}
+          />
           <div 
-            className="w-full h-56 flex items-center justify-center text-7xl transition-all duration-500 group-hover:scale-110 relative"
+            className="w-full h-56 hidden items-center justify-center text-7xl transition-all duration-500 group-hover:scale-110 relative"
             style={{ 
               background: `linear-gradient(135deg, ${getCategoryColor()}dd, ${getCategoryColor()}55)`,
             }}
@@ -72,7 +84,7 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
           )}
         </div>
       </CardHeader>
-      <CardContent className="flex-1 p-5">
+      <CardContent className="flex-1 p-5" onClick={() => onProductClick(product)}>
         <Badge variant="outline" className="mb-3 bg-white/5 border-white/10 backdrop-blur-sm">{product.brand}</Badge>
         <CardTitle className="text-lg mb-2 line-clamp-2 font-semibold">{product.name}</CardTitle>
         <CardDescription className="text-sm mb-4 line-clamp-2 opacity-70">{product.description}</CardDescription>
@@ -87,7 +99,7 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-5 pt-0 flex-col gap-3">
+      <CardFooter className="p-5 pt-0 flex-col gap-3" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between w-full mb-2">
           <span className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">{product.price.toLocaleString()} ₽</span>
         </div>
