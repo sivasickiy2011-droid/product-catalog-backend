@@ -159,8 +159,8 @@ const FashionProductCard = ({
           <h3 className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">
             {product.name}
           </h3>
-          <div className="flex items-center justify-between">
-            <span className="text-lg font-bold text-gray-900 dark:text-white">
+          <div className="flex flex-col gap-2">
+            <span className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
               {product.price.toLocaleString()} ₽
             </span>
             <Button
@@ -170,7 +170,7 @@ const FashionProductCard = ({
               }}
               disabled={!product.inStock}
               size="sm"
-              className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 h-8 px-3"
+              className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 h-8 px-3 text-xs w-full"
             >
               Купить
             </Button>
@@ -247,10 +247,10 @@ const FashionProductCard = ({
           </div>
         </div>
 
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+        <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="flex flex-col">
             <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Цена</span>
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
               {product.price.toLocaleString()} ₽
             </span>
           </div>
@@ -260,7 +260,7 @@ const FashionProductCard = ({
               onAddToCart(product);
             }}
             disabled={!product.inStock}
-            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-6 py-6 text-sm font-semibold uppercase tracking-wider"
+            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-4 sm:px-6 py-3 sm:py-6 text-xs sm:text-sm font-semibold uppercase tracking-wider w-full sm:w-auto"
           >
             Купить
           </Button>

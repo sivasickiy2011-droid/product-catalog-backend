@@ -169,16 +169,22 @@ const Index = () => {
 
       {isFashionTheme ? (
         <main className="container py-6 md:py-12 px-4 md:px-6">
-          <div className="mb-6 md:mb-8 animate-slide-up flex items-start justify-between flex-wrap gap-4">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-3 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
-                Дизайнерская одежда
-              </h2>
-              <p className="text-sm md:text-lg text-muted-foreground">
-                Найдено {filteredProducts.length} товаров
-              </p>
+          <div className="mb-6 md:mb-8 animate-slide-up">
+            <div className="flex items-start justify-between flex-wrap gap-4 mb-4">
+              <div>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-3 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
+                  Дизайнерская одежда
+                </h2>
+                <p className="text-sm md:text-lg text-muted-foreground">
+                  Найдено {filteredProducts.length} товаров
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-3">
+                <FashionViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
+              </div>
             </div>
-            <div className="flex items-center gap-3">
+            
+            <div className="flex items-center gap-2 sm:hidden">
               <FashionFiltersDrawer
                 brands={brands}
                 categories={categories}
