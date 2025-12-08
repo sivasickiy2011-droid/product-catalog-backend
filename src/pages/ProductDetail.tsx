@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
 import { Product, products } from '@/data/ProductData';
+import { catalogThemes } from '@/data/CatalogThemes';
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ const ProductDetail = () => {
   const productFromData = products.find(p => p.id === Number(id));
   const product = productFromState || productFromData;
   const [quantity, setQuantity] = useState(1);
+
+  const allProducts = catalogThemes.flatMap(theme => theme.products);
+  const productWithReviews = allProducts.find(p => p.id === Number(id));
+  const reviews = productWithReviews?.reviews || [];
 
   if (!product) {
     return (
@@ -303,10 +308,54 @@ const ProductDetail = () => {
 
           <TabsContent value="reviews" className="mt-6">
             <Card className="bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-xl">
-              <CardContent className="p-8 text-center">
-                <Icon name="MessageSquare" className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-2xl font-bold mb-2">Отзывов пока нет</h3>
-                <p className="text-lg text-muted-foreground">Станьте первым, кто оставит отзыв о товаре</p>
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6">Отзывы покупателей</h3>
+                {reviews.length > 0 ? (
+                  <div className="space-y-6">
+                    {reviews.map((review) => (
+                      <div key={review.id} className="p-6 bg-card/50 rounded-lg border border-white/5">
+                        <div className="flex items-start gap-4">
+                          <img 
+                            src={review.avatar} 
+                            alt={review.author}
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <h4 className="font-semibold">{review.author}</h4>
+                                <span className="text-2xl">{review.emoji}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                  <Icon 
+                                    key={i} 
+                                    name="Star" 
+                                    className={`h-4 w-4 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            <p className="text-muted-foreground mb-2">{review.comment}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {new Date(review.date).toLocaleDateString('ru-RU', { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                              })}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <Icon name="MessageSquare" className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+                    <h3 className="text-xl font-bold mb-2">Отзывов пока нет</h3>
+                    <p className="text-muted-foreground">Станьте первым, кто оставит отзыв о товаре</p>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>

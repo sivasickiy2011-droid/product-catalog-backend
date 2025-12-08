@@ -1,3 +1,13 @@
+export interface Review {
+  id: number;
+  author: string;
+  avatar: string;
+  rating: number;
+  comment: string;
+  date: string;
+  emoji: string;
+}
+
 export interface ThemeProduct {
   id: number;
   name: string;
@@ -10,6 +20,7 @@ export interface ThemeProduct {
   description: string;
   image: string;
   inStock: boolean;
+  reviews?: Review[];
 }
 
 export interface CatalogTheme {
@@ -39,6 +50,26 @@ export const catalogThemes: CatalogTheme[] = [
         description: 'Профессиональный инструмент для сверления и завинчивания',
         image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Алексей Петров',
+            avatar: 'https://i.pravatar.cc/150?img=12',
+            rating: 5,
+            comment: 'Отличная дрель! Мощная, удобная, батарея держит долго. Использую для ремонта дома 🔥',
+            date: '2025-11-15',
+            emoji: '👍'
+          },
+          {
+            id: 2,
+            author: 'Мария Смирнова',
+            avatar: 'https://i.pravatar.cc/150?img=5',
+            rating: 4,
+            comment: 'Хороший инструмент, но немного тяжеловат для женских рук. В целом доволна покупкой',
+            date: '2025-11-20',
+            emoji: '😊'
+          }
+        ]
       },
       {
         id: 2,
@@ -52,6 +83,26 @@ export const catalogThemes: CatalogTheme[] = [
         description: 'Мощный перфоратор для бетона и камня',
         image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Дмитрий Козлов',
+            avatar: 'https://i.pravatar.cc/150?img=33',
+            rating: 5,
+            comment: 'Зверь-машина! Бетон сверлит как масло. Купил для стройки, не пожалел ни разу 💪',
+            date: '2025-11-10',
+            emoji: '🔨'
+          },
+          {
+            id: 2,
+            author: 'Сергей Волков',
+            avatar: 'https://i.pravatar.cc/150?img=15',
+            rating: 5,
+            comment: 'Лучший перфоратор за свои деньги. Makita как всегда на высоте!',
+            date: '2025-11-25',
+            emoji: '⚡'
+          }
+        ]
       },
       {
         id: 3,
