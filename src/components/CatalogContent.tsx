@@ -41,17 +41,17 @@ const CatalogContent = ({
   const navigate = useNavigate();
 
   return (
-    <main className="container py-12 relative">
-      <div className="mb-8 animate-slide-up">
-        <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+    <main className="container py-6 md:py-12 relative px-4 md:px-6">
+      <div className="mb-6 md:mb-8 animate-slide-up">
+        <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-3 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
           Каталог товаров
         </h2>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-sm md:text-lg text-muted-foreground">
           Найдено {filteredProducts.length} товаров
         </p>
       </div>
 
-      <div className="mb-8 sticky top-20 z-40">
+      <div className="mb-6 md:mb-8 sticky top-16 md:top-20 z-40">
         <ProductFilters
           selectedCategory={selectedCategory}
           selectedBrand={selectedBrand}
@@ -65,7 +65,7 @@ const CatalogContent = ({
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {filteredProducts.map((product, index) => (
           <ProductCard
             key={product.id}

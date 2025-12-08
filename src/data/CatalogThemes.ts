@@ -372,7 +372,7 @@ export const catalogThemes: CatalogTheme[] = [
   },
   {
     id: 'fashion',
-    name: 'Дизайнерская одежда',
+    name: 'Одежда',
     icon: '👗',
     categories: ['Платья', 'Костюмы', 'Аксессуары', 'Обувь'],
     products: [
