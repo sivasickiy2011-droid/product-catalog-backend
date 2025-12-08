@@ -15,7 +15,7 @@ const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
   const [priceRange, setPriceRange] = useState([0, 40000000]);
   const [currentTheme, setCurrentTheme] = useState<string>('electronics');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const activeThemeData = catalogThemes.find(t => t.id === currentTheme);
   const currentProducts = activeThemeData?.products || products;
