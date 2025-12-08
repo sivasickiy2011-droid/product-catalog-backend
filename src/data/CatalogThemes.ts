@@ -48,7 +48,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.5 кг',
         description: 'Профессиональный инструмент для сверления и завинчивания',
-        image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -81,7 +81,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '3.2 кг',
         description: 'Мощный перфоратор для бетона и камня',
-        image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
+        image: 'https://images.pexels.com/photos/5691630/pexels-photo-5691630.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
         reviews: [
           {
@@ -114,8 +114,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.1 кг',
         description: 'Компактная УШМ для резки и шлифовки',
-        image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Игорь Романов',
+            avatar: 'https://i.pravatar.cc/150?img=8',
+            rating: 5,
+            comment: 'Отличная болгарка! Мощная, режет металл без проблем. DeWalt радует качеством 🔥',
+            date: '2025-11-12',
+            emoji: '💪'
+          },
+          {
+            id: 2,
+            author: 'Антон Белов',
+            avatar: 'https://i.pravatar.cc/150?img=22',
+            rating: 5,
+            comment: 'Компактная и производительная. Использую каждый день на работе, нареканий нет',
+            date: '2025-11-18',
+            emoji: '👍'
+          }
+        ]
       },
       {
         id: 4,
@@ -127,8 +147,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.05 кг',
         description: 'Энергосберегающая LED лампа теплый белый',
-        image: 'https://images.unsplash.com/photo-1602080858428-57174f9431cf?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Елена Соколова',
+            avatar: 'https://i.pravatar.cc/150?img=45',
+            rating: 5,
+            comment: 'Приятный теплый свет, не мерцает. Брала сразу 10 штук для всей квартиры 💡',
+            date: '2025-11-08',
+            emoji: '😊'
+          },
+          {
+            id: 2,
+            author: 'Вадим Кузнецов',
+            avatar: 'https://i.pravatar.cc/150?img=18',
+            rating: 4,
+            comment: 'Хорошая лампа за свои деньги. Philips всегда на высоте',
+            date: '2025-11-22',
+            emoji: '👌'
+          }
+        ]
       },
       {
         id: 5,
@@ -140,8 +180,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '1.2 кг',
         description: 'Уличный IP65 светодиодный прожектор',
-        image: 'https://images.pexels.com/photos/3683056/pexels-photo-3683056.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Михаил Орлов',
+            avatar: 'https://i.pravatar.cc/150?img=32',
+            rating: 5,
+            comment: 'Яркий прожектор, отлично освещает двор. Влагозащита работает, зиму пережил 🌟',
+            date: '2025-11-05',
+            emoji: '🔦'
+          },
+          {
+            id: 2,
+            author: 'Ольга Макарова',
+            avatar: 'https://i.pravatar.cc/150?img=47',
+            rating: 5,
+            comment: 'Установили на даче - очень доволны. Светит ярко, собирается легко',
+            date: '2025-11-14',
+            emoji: '✨'
+          }
+        ]
       },
       {
         id: 6,
@@ -153,8 +213,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.5 кг',
         description: 'Современная потолочная люстра для гостиной',
-        image: 'https://images.unsplash.com/photo-1545318813-f0447d1e1ac3?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&q=80',
         inStock: false,
+        reviews: [
+          {
+            id: 1,
+            author: 'Татьяна Новикова',
+            avatar: 'https://i.pravatar.cc/150?img=25',
+            rating: 4,
+            comment: 'Красивая люстра, стильно смотрится в интерьере. Минус - долго ждала поставку',
+            date: '2025-11-07',
+            emoji: '😍'
+          },
+          {
+            id: 2,
+            author: 'Александр Морозов',
+            avatar: 'https://i.pravatar.cc/150?img=14',
+            rating: 5,
+            comment: 'Отличное качество за такую цену. Легко монтируется, свет равномерный',
+            date: '2025-11-19',
+            emoji: '👍'
+          }
+        ]
       },
       {
         id: 7,
@@ -166,8 +246,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '15 кг',
         description: 'Силовой кабель для скрытой проводки',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Павел Степанов',
+            avatar: 'https://i.pravatar.cc/150?img=52',
+            rating: 5,
+            comment: 'Качественный кабель, использовал для проводки в доме. Сечение соответствует ⚡',
+            date: '2025-11-11',
+            emoji: '🔌'
+          },
+          {
+            id: 2,
+            author: 'Виктор Лебедев',
+            avatar: 'https://i.pravatar.cc/150?img=29',
+            rating: 4,
+            comment: 'Хороший кабель, цена адекватная. Брал для гаража',
+            date: '2025-11-24',
+            emoji: '👌'
+          }
+        ]
       },
       {
         id: 8,
@@ -179,8 +279,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.6 кг',
         description: 'Сетевой фильтр с защитой от перегрузки',
-        image: 'https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1591290619762-f1380021e5b1?w=800&q=80',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Наталья Федорова',
+            avatar: 'https://i.pravatar.cc/150?img=38',
+            rating: 5,
+            comment: 'Удобный удлинитель, розетки расположены правильно. Защита работает 💯',
+            date: '2025-11-03',
+            emoji: '⚡'
+          },
+          {
+            id: 2,
+            author: 'Андрей Зайцев',
+            avatar: 'https://i.pravatar.cc/150?img=61',
+            rating: 4,
+            comment: 'Нормальный удлинитель за свои деньги. Кнопка включения удобная',
+            date: '2025-11-16',
+            emoji: '😊'
+          }
+        ]
       },
       {
         id: 9,
@@ -192,8 +312,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.3 кг',
         description: 'Электролобзик для фигурной резки дерева и металла',
-        image: 'https://images.pexels.com/photos/5691621/pexels-photo-5691621.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/6368850/pexels-photo-6368850.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Роман Соловьев',
+            avatar: 'https://i.pravatar.cc/150?img=19',
+            rating: 5,
+            comment: 'Точный рез, удобно держать в руке. Bosch как всегда не подводит! 🪚',
+            date: '2025-11-09',
+            emoji: '🔥'
+          },
+          {
+            id: 2,
+            author: 'Кирилл Васильев',
+            avatar: 'https://i.pravatar.cc/150?img=42',
+            rating: 5,
+            comment: 'Лучший лобзик в этой ценовой категории. Режет дерево идеально',
+            date: '2025-11-21',
+            emoji: '👍'
+          }
+        ]
       },
       {
         id: 10,
@@ -205,8 +345,28 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.8 кг',
         description: 'Ударный шуруповерт с бесщеточным двигателем',
-        image: 'https://images.pexels.com/photos/5691589/pexels-photo-5691589.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/5691772/pexels-photo-5691772.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
+        reviews: [
+          {
+            id: 1,
+            author: 'Евгений Попов',
+            avatar: 'https://i.pravatar.cc/150?img=56',
+            rating: 5,
+            comment: 'Мощный и надежный инструмент! Бесщеточный двигатель - это будущее 💪',
+            date: '2025-11-06',
+            emoji: '⚡'
+          },
+          {
+            id: 2,
+            author: 'Станислав Комаров',
+            avatar: 'https://i.pravatar.cc/150?img=27',
+            rating: 4,
+            comment: 'Хороший шуруповерт, крутящий момент впечатляет. Немного тяжеловат',
+            date: '2025-11-17',
+            emoji: '👌'
+          }
+        ]
       },
     ],
   },
@@ -226,7 +386,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 120 см',
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
-        image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80',
         inStock: true,
       },
       {
@@ -239,7 +399,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шерсть 100%',
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
-        image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
         inStock: true,
       },
       {
@@ -252,7 +412,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кожа телёнка',
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
-        image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80',
         inStock: true,
       },
       {
@@ -265,7 +425,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 10 см',
         weight: '0.6 кг',
         description: 'Классические туфли на каблуке из лакированной кожи',
-        image: 'https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80',
         inStock: true,
       },
       {

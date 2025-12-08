@@ -6,6 +6,7 @@ import { Product } from '@/data/ProductData';
 interface CatalogContentProps {
   filteredProducts: Product[];
   compareList: Product[];
+  favoritesList: Product[];
   selectedCategory: string;
   selectedBrand: string;
   priceRange: number[];
@@ -17,11 +18,13 @@ interface CatalogContentProps {
   onResetFilters: () => void;
   onAddToCart: (product: Product) => void;
   onToggleCompare: (product: Product) => void;
+  onToggleFavorite: (product: Product) => void;
 }
 
 const CatalogContent = ({
   filteredProducts,
   compareList,
+  favoritesList,
   selectedCategory,
   selectedBrand,
   priceRange,
@@ -33,6 +36,7 @@ const CatalogContent = ({
   onResetFilters,
   onAddToCart,
   onToggleCompare,
+  onToggleFavorite,
 }: CatalogContentProps) => {
   const navigate = useNavigate();
 
@@ -69,7 +73,9 @@ const CatalogContent = ({
             index={index}
             onAddToCart={onAddToCart}
             onToggleCompare={onToggleCompare}
+            onToggleFavorite={onToggleFavorite}
             isInCompare={compareList.some((p) => p.id === product.id)}
+            isInFavorites={favoritesList.some((p) => p.id === product.id)}
             onProductClick={(product) => navigate(`/product/${product.id}`)}
           />
         ))}

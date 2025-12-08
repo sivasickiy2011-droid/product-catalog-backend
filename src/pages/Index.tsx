@@ -9,6 +9,7 @@ import { catalogThemes } from '@/data/CatalogThemes';
 const Index = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [compareList, setCompareList] = useState<Product[]>([]);
+  const [favoritesList, setFavoritesList] = useState<Product[]>([]);
   const [showCompare, setShowCompare] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
@@ -91,6 +92,18 @@ const Index = () => {
     });
   };
 
+  const toggleFavorite = (product: Product) => {
+    setFavoritesList(prev => {
+      const exists = prev.find(p => p.id === product.id);
+      if (exists) {
+        toast.info('Товар удален из избранного');
+        return prev.filter(p => p.id !== product.id);
+      }
+      toast.success('Товар добавлен в избранное ❤️');
+      return [...prev, product];
+    });
+  };
+
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -115,6 +128,7 @@ const Index = () => {
       <CatalogContent
         filteredProducts={filteredProducts}
         compareList={compareList}
+        favoritesList={favoritesList}
         selectedCategory={selectedCategory}
         selectedBrand={selectedBrand}
         priceRange={priceRange}
@@ -130,6 +144,7 @@ const Index = () => {
         }}
         onAddToCart={addToCart}
         onToggleCompare={toggleCompare}
+        onToggleFavorite={toggleFavorite}
       />
 
       <CompareDialog

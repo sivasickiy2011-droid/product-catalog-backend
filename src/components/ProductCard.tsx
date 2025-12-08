@@ -22,11 +22,13 @@ interface ProductCardProps {
   index: number;
   onAddToCart: (product: Product) => void;
   onToggleCompare: (product: Product) => void;
+  onToggleFavorite: (product: Product) => void;
   isInCompare: boolean;
+  isInFavorites: boolean;
   onProductClick: (product: Product) => void;
 }
 
-const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare, onProductClick }: ProductCardProps) => {
+const ProductCard = ({ product, index, onAddToCart, onToggleCompare, onToggleFavorite, isInCompare, isInFavorites, onProductClick }: ProductCardProps) => {
   const getCategoryColor = () => {
     switch (product.category) {
       case 'Электроинструменты':
@@ -84,8 +86,24 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
             <span className="relative z-10 drop-shadow-2xl">{getCategoryIcon()}</span>
           </div>
           
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite(product);
+            }}
+            className={`absolute top-3 right-3 z-20 backdrop-blur-md transition-all duration-500 hover:scale-110 ${
+              isInFavorites 
+                ? 'bg-red-500/20 text-red-400 border-red-500/50 shadow-lg shadow-red-500/30' 
+                : 'bg-black/60 hover:bg-black/80 border-white/20'
+            }`}
+          >
+            <Icon name="Heart" className={`h-4 w-4 ${isInFavorites ? 'fill-red-400' : ''}`} />
+          </Button>
+          
           {!product.inStock && (
-            <Badge variant="destructive" className="absolute top-3 right-3 z-20 shadow-lg">
+            <Badge variant="destructive" className="absolute bottom-3 right-3 z-20 shadow-lg">
               Нет в наличии
             </Badge>
           )}
