@@ -386,7 +386,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 120 см',
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Valentino+Dress',
+        image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -399,7 +399,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шерсть 100%',
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Armani+Suit',
+        image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -412,7 +412,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кожа телёнка',
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Prada+Bag',
+        image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -425,7 +425,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 10 см',
         weight: '0.6 кг',
         description: 'Классические туфли на каблуке из лакированной кожи',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Louboutin+Heels',
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -438,7 +438,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кашемир 100%',
         weight: '1.5 кг',
         description: 'Роскошное пальто из 100% кашемира',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=MaxMara+Coat',
+        image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&h=800&fit=crop&q=80',
         inStock: false,
       },
       {
@@ -451,7 +451,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Поляризация',
         weight: '0.05 кг',
         description: 'Солнцезащитные очки с поляризационными линзами',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Gucci+Sunglasses',
+        image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -464,7 +464,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Твид букле',
         weight: '0.8 кг',
         description: 'Женский костюм в стиле Коко Шанель',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Chanel+Suit',
+        image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -477,7 +477,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 8 см',
         weight: '0.8 кг',
         description: 'Замшевые ботильоны на устойчивом каблуке',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=JimmyChoo+Boots',
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -490,7 +490,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шелк 100%',
         weight: '0.1 кг',
         description: 'Фирменный платок-каре с авторским принтом',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Hermes+Scarf',
+        image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
       {
@@ -503,7 +503,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 95 см',
         weight: '0.5 кг',
         description: 'Платье-футляр с кружевной отделкой',
-        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Cocktail+Dress',
+        image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&h=800&fit=crop&q=80',
         inStock: true,
       },
     ],
