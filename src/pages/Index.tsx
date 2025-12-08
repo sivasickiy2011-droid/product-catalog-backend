@@ -90,7 +90,7 @@ const products: Product[] = [
     voltage: '220 В',
     weight: '1.2 кг',
     description: 'Уличный IP65 светодиодный прожектор',
-    image: 'https://images.unsplash.com/photo-1550985616-10810253b84d?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
     inStock: true,
   },
   {
