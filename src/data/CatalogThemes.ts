@@ -48,7 +48,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.5 кг',
         description: 'Профессиональный инструмент для сверления и завинчивания',
-        image: 'https://picsum.photos/seed/drill-bosch/800/1000',
+        image: 'https://via.placeholder.com/800x1000/1e40af/ffffff?text=Bosch+Drill',
         inStock: true,
         reviews: [
           {
@@ -81,7 +81,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '3.2 кг',
         description: 'Мощный перфоратор для бетона и камня',
-        image: 'https://picsum.photos/seed/hammer-makita/800/1000',
+        image: 'https://via.placeholder.com/800x1000/0c4a6e/ffffff?text=Makita+Hammer',
         inStock: true,
         reviews: [
           {
@@ -114,7 +114,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.1 кг',
         description: 'Компактная УШМ для резки и шлифовки',
-        image: 'https://picsum.photos/seed/grinder-dewalt/800/1000',
+        image: 'https://via.placeholder.com/800x1000/1e40af/ffffff?text=DeWalt+Grinder',
         inStock: true,
         reviews: [
           {
@@ -147,7 +147,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.05 кг',
         description: 'Энергосберегающая LED лампа теплый белый',
-        image: 'https://picsum.photos/seed/led-bulb-philips/800/1000',
+        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Philips+LED',
         inStock: true,
         reviews: [
           {
@@ -180,7 +180,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '1.2 кг',
         description: 'Уличный IP65 светодиодный прожектор',
-        image: 'https://picsum.photos/seed/floodlight-osram/800/1000',
+        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Osram+Light',
         inStock: true,
         reviews: [
           {
@@ -213,7 +213,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.5 кг',
         description: 'Современная потолочная люстра для гостиной',
-        image: 'https://picsum.photos/seed/chandelier-lucia/800/1000',
+        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Chandelier',
         inStock: false,
         reviews: [
           {
@@ -246,7 +246,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '15 кг',
         description: 'Силовой кабель для скрытой проводки',
-        image: 'https://picsum.photos/seed/cable-vvg/800/1000',
+        image: 'https://via.placeholder.com/800x1000/8b5cf6/ffffff?text=Cable+VVG',
         inStock: true,
         reviews: [
           {
@@ -279,7 +279,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.6 кг',
         description: 'Сетевой фильтр с защитой от перегрузки',
-        image: 'https://picsum.photos/seed/extension-cord/800/1000',
+        image: 'https://via.placeholder.com/800x1000/8b5cf6/ffffff?text=Extension',
         inStock: true,
         reviews: [
           {
@@ -312,7 +312,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.3 кг',
         description: 'Электролобзик для фигурной резки дерева и металла',
-        image: 'https://picsum.photos/seed/jigsaw-bosch/800/1000',
+        image: 'https://via.placeholder.com/800x1000/1e40af/ffffff?text=Bosch+Jigsaw',
         inStock: true,
         reviews: [
           {
@@ -345,7 +345,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.8 кг',
         description: 'Ударный шуруповерт с бесщеточным двигателем',
-        image: 'https://picsum.photos/seed/screwdriver-makita/800/1000',
+        image: 'https://via.placeholder.com/800x1000/0c4a6e/ffffff?text=Makita+Driver',
         inStock: true,
         reviews: [
           {
@@ -386,7 +386,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 120 см',
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
-        image: 'https://picsum.photos/seed/dress-valentino/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Valentino+Dress',
         inStock: true,
       },
       {
@@ -399,7 +399,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шерсть 100%',
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
-        image: 'https://picsum.photos/seed/suit-armani/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Armani+Suit',
         inStock: true,
       },
       {
@@ -412,7 +412,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кожа телёнка',
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
-        image: 'https://picsum.photos/seed/bag-prada/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Prada+Bag',
         inStock: true,
       },
       {
@@ -425,7 +425,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 10 см',
         weight: '0.6 кг',
         description: 'Классические туфли на каблуке из лакированной кожи',
-        image: 'https://picsum.photos/seed/heels-louboutin/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Louboutin+Heels',
         inStock: true,
       },
       {
@@ -438,7 +438,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кашемир 100%',
         weight: '1.5 кг',
         description: 'Роскошное пальто из 100% кашемира',
-        image: 'https://picsum.photos/seed/coat-maxmara/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=MaxMara+Coat',
         inStock: false,
       },
       {
@@ -451,7 +451,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Поляризация',
         weight: '0.05 кг',
         description: 'Солнцезащитные очки с поляризационными линзами',
-        image: 'https://picsum.photos/seed/sunglasses-gucci-fashion/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Gucci+Sunglasses',
         inStock: true,
       },
       {
@@ -464,7 +464,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Твид букле',
         weight: '0.8 кг',
         description: 'Женский костюм в стиле Коко Шанель',
-        image: 'https://picsum.photos/seed/suit-chanel/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Chanel+Suit',
         inStock: true,
       },
       {
@@ -477,7 +477,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 8 см',
         weight: '0.8 кг',
         description: 'Замшевые ботильоны на устойчивом каблуке',
-        image: 'https://picsum.photos/seed/boots-jimmychoo/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=JimmyChoo+Boots',
         inStock: true,
       },
       {
@@ -490,7 +490,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шелк 100%',
         weight: '0.1 кг',
         description: 'Фирменный платок-каре с авторским принтом',
-        image: 'https://picsum.photos/seed/scarf-hermes/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Hermes+Scarf',
         inStock: true,
       },
       {
@@ -503,7 +503,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 95 см',
         weight: '0.5 кг',
         description: 'Платье-футляр с кружевной отделкой',
-        image: 'https://picsum.photos/seed/cocktail-dress/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ec4899/ffffff?text=Cocktail+Dress',
         inStock: true,
       },
     ],
@@ -524,7 +524,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 5.1 сек',
         weight: '2100 кг',
         description: 'Премиальный седан бизнес-класса с роскошным интерьером',
-        image: 'https://picsum.photos/seed/mercedes-sclass/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=Mercedes+S-Class',
         inStock: true,
       },
       {
@@ -537,7 +537,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Полный привод',
         weight: '2450 кг',
         description: 'Полноразмерный роскошный внедорожник с 7 местами',
-        image: 'https://picsum.photos/seed/bmw-x7/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=BMW+X7',
         inStock: true,
       },
       {
@@ -550,7 +550,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 4.2 сек',
         weight: '1505 кг',
         description: 'Легендарный спортивный автомобиль с задним приводом',
-        image: 'https://picsum.photos/seed/porsche-911-auto/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ea580c/ffffff?text=Porsche+911',
         inStock: true,
       },
       {
@@ -563,7 +563,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Запас 600 км',
         weight: '2162 кг',
         description: 'Электрический седан с запасом хода 600 км',
-        image: 'https://picsum.photos/seed/tesla-model-s-auto/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=Tesla+Model+S',
         inStock: true,
       },
       {
@@ -576,7 +576,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Quattro 4WD',
         weight: '2145 кг',
         description: 'Флагманский кроссовер-купе с технологией quattro',
-        image: 'https://picsum.photos/seed/audi-q8/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=Audi+Q8',
         inStock: true,
       },
       {
@@ -589,7 +589,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 2.9 сек',
         weight: '1422 кг',
         description: 'Итальянский суперкар с двигателем V10',
-        image: 'https://picsum.photos/seed/lamborghini-huracan/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ea580c/ffffff?text=Lamborghini',
         inStock: false,
       },
       {
@@ -602,7 +602,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 6.2 сек',
         weight: '1770 кг',
         description: 'Бизнес-седан с передовыми технологиями',
-        image: 'https://picsum.photos/seed/bmw-5series/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=BMW+5+Series',
         inStock: true,
       },
       {
@@ -615,7 +615,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Полный привод',
         weight: '2045 кг',
         description: 'Премиальный кроссовер с безупречной надёжностью',
-        image: 'https://picsum.photos/seed/lexus-rx350/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=Lexus+RX350',
         inStock: true,
       },
       {
@@ -628,7 +628,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Запас 500 км',
         weight: '1847 кг',
         description: 'Спортивный электроседан с автопилотом',
-        image: 'https://picsum.photos/seed/tesla-model3/800/1000',
+        image: 'https://via.placeholder.com/800x1000/dc2626/ffffff?text=Tesla+Model+3',
         inStock: true,
       },
       {
@@ -641,7 +641,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 2.9 сек',
         weight: '1330 кг',
         description: 'Среднемоторный суперкар с двигателем V8',
-        image: 'https://picsum.photos/seed/ferrari-f8-auto/800/1000',
+        image: 'https://via.placeholder.com/800x1000/ea580c/ffffff?text=Ferrari+F8',
         inStock: true,
       },
     ],
@@ -662,7 +662,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '200+ часов',
         weight: 'Сертификат',
         description: 'Комплексный курс веб-разработки React + Node.js',
-        image: 'https://picsum.photos/seed/course-fullstack/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Fullstack+Course',
         inStock: true,
       },
       {
@@ -675,7 +675,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '150+ часов',
         weight: 'Портфолио',
         description: 'Профессия дизайнера интерфейсов с портфолио',
-        image: 'https://picsum.photos/seed/course-uxui/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=UX+UI+Design',
         inStock: true,
       },
       {
@@ -688,7 +688,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '180+ часов',
         weight: 'Диплом',
         description: 'Полный курс digital-маркетинга от А до Я',
-        image: 'https://picsum.photos/seed/course-marketing/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Marketing+Course',
         inStock: true,
       },
       {
@@ -701,7 +701,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '300+ часов',
         weight: 'MBA диплом',
         description: 'Программа MBA для руководителей и предпринимателей',
-        image: 'https://picsum.photos/seed/course-mba-education/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=MBA+Program',
         inStock: true,
       },
       {
@@ -714,7 +714,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '190+ часов',
         weight: 'Сертификат',
         description: 'Освойте Python для backend и Data Science',
-        image: 'https://picsum.photos/seed/course-python-education/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Python+Course',
         inStock: true,
       },
       {
@@ -727,7 +727,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '140+ часов',
         weight: 'Портфолио',
         description: 'Создание визуального контента в Adobe Suite',
-        image: 'https://picsum.photos/seed/course-graphic-design/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Graphic+Design',
         inStock: true,
       },
       {
@@ -740,7 +740,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '120+ часов',
         weight: 'Сертификат',
         description: 'Продвижение в социальных сетях с нуля',
-        image: 'https://picsum.photos/seed/course-smm/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=SMM+Course',
         inStock: true,
       },
       {
@@ -753,7 +753,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '250+ часов',
         weight: 'Диплом',
         description: 'Аналитика данных и машинное обучение',
-        image: 'https://picsum.photos/seed/course-datascience/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Data+Science',
         inStock: true,
       },
       {
@@ -766,7 +766,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '100+ часов',
         weight: 'Сертификат',
         description: 'Яндекс.Директ и Google Ads от А до Я',
-        image: 'https://picsum.photos/seed/course-advertising-education/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Advertising+Course',
         inStock: true,
       },
       {
@@ -779,7 +779,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220+ часов',
         weight: 'Диплом',
         description: 'Управление IT-продуктами и командами',
-        image: 'https://picsum.photos/seed/course-product-manager/800/1000',
+        image: 'https://via.placeholder.com/800x1000/059669/ffffff?text=Product+Manager',
         inStock: true,
       },
     ],
