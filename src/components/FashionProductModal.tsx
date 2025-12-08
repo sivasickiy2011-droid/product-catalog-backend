@@ -1,0 +1,152 @@
+import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import Icon from '@/components/ui/icon';
+import { Product } from '@/data/ProductData';
+
+interface FashionProductModalProps {
+  product: Product;
+  isOpen: boolean;
+  onClose: () => void;
+  onAddToCart: (product: Product) => void;
+  onToggleFavorite: (product: Product) => void;
+  isInFavorites: boolean;
+}
+
+const FashionProductModal = ({
+  product,
+  isOpen,
+  onClose,
+  onAddToCart,
+  onToggleFavorite,
+  isInFavorites,
+}: FashionProductModalProps) => {
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-7xl h-auto max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
+        <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/80 dark:bg-black/80 p-2 backdrop-blur-sm hover:bg-white dark:hover:bg-black transition-all">
+          <Icon name="X" className="h-6 w-6" />
+        </DialogClose>
+
+        <div className="grid md:grid-cols-2 gap-8 p-8">
+          <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+            {!product.inStock && (
+              <Badge variant="destructive" className="absolute top-4 right-4 shadow-lg text-base px-4 py-2">
+                Нет в наличии
+              </Badge>
+            )}
+          </div>
+
+          <div className="flex flex-col justify-center space-y-8 pr-8">
+            <div>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-sm font-bold tracking-widest text-primary uppercase">
+                  {product.brand}
+                </div>
+                <Badge variant="outline" className="text-xs">
+                  {product.category}
+                </Badge>
+              </div>
+              
+              <h2 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+                {product.name}
+              </h2>
+              
+              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                {product.description}
+              </p>
+            </div>
+
+            <div className="space-y-4 py-8 border-y border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                Характеристики
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+                  <Icon name="Ruler" className="h-5 w-5 text-primary" />
+                  <span className="font-medium">{product.power}</span>
+                </div>
+                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+                  <Icon name="Package" className="h-5 w-5 text-primary" />
+                  <span className="font-medium">{product.voltage}</span>
+                </div>
+                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+                  <Icon name="Shirt" className="h-5 w-5 text-primary" />
+                  <span className="font-medium">{product.weight}</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-green-600 dark:text-green-400">
+                  <Icon name="Check" className="h-5 w-5" />
+                  <span className="font-medium">Premium качество</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-baseline gap-4">
+                <span className="text-5xl font-bold text-gray-900 dark:text-white">
+                  {product.price.toLocaleString()} ₽
+                </span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  Окончательная цена
+                </span>
+              </div>
+
+              <div className="flex gap-4">
+                <Button
+                  onClick={() => {
+                    onAddToCart(product);
+                    onClose();
+                  }}
+                  disabled={!product.inStock}
+                  size="lg"
+                  className="flex-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 py-6 text-base font-semibold uppercase tracking-wider"
+                >
+                  <Icon name="ShoppingCart" className="mr-2 h-5 w-5" />
+                  Добавить в корзину
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => onToggleFavorite(product)}
+                  className={`px-6 py-6 ${
+                    isInFavorites 
+                      ? 'bg-red-500 text-white hover:bg-red-600 border-red-500' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <Icon 
+                    name="Heart" 
+                    className={`h-5 w-5 ${isInFavorites ? 'fill-white' : ''}`} 
+                  />
+                </Button>
+              </div>
+
+              <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-3">
+                  <Icon name="Truck" className="h-5 w-5" />
+                  <span>Бесплатная доставка по Москве</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Icon name="RotateCcw" className="h-5 w-5" />
+                  <span>Возврат в течение 14 дней</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Icon name="Shield" className="h-5 w-5" />
+                  <span>Гарантия подлинности</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default FashionProductModal;
