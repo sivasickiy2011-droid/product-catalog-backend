@@ -386,7 +386,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 120 см',
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
-        image: 'https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?w=800&h=800&fit=crop',
+        image: 'https://cdn.poehali.dev/files/gettyimages-1847199028-1024x1024.jpg',
         inStock: true,
       },
       {
@@ -399,7 +399,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шерсть 100%',
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
-        image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?w=800&h=800&fit=crop',
+        image: 'https://cdn.poehali.dev/files/gettyimages-1462655622-1024x1024.jpg',
         inStock: true,
       },
       {
@@ -412,7 +412,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кожа телёнка',
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
-        image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?w=800&h=800&fit=crop',
+        image: 'https://cdn.poehali.dev/files/gettyimages-1347455404-1024x1024.jpg',
         inStock: true,
       },
       {
@@ -464,7 +464,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Твид букле',
         weight: '0.8 кг',
         description: 'Женский костюм в стиле Коко Шанель',
-        image: 'https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg?w=800&h=800&fit=crop',
+        image: 'https://cdn.poehali.dev/files/gettyimages-2155004323-1024x1024.jpg',
         inStock: true,
       },
       {
@@ -503,7 +503,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 95 см',
         weight: '0.5 кг',
         description: 'Платье-футляр с кружевной отделкой',
-        image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?w=800&h=800&fit=crop',
+        image: 'https://cdn.poehali.dev/files/gettyimages-495960336-1024x1024.jpg',
         inStock: true,
       },
     ],
