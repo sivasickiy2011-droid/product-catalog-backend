@@ -13,12 +13,14 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
-  const productFromState = location.state?.product as Product;
-  const productFromData = products.find(p => p.id === Number(id));
-  const product = productFromState || productFromData;
   const [quantity, setQuantity] = useState(1);
 
   const allProducts = catalogThemes.flatMap(theme => theme.products);
+  const productFromState = location.state?.product as Product;
+  const productFromCatalog = allProducts.find(p => p.id === Number(id));
+  const productFromData = products.find(p => p.id === Number(id));
+  const product = productFromState || productFromCatalog || productFromData;
+  
   const productWithReviews = allProducts.find(p => p.id === Number(id));
   const reviews = productWithReviews?.reviews || [];
 
