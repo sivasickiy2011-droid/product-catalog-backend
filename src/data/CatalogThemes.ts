@@ -147,7 +147,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.05 кг',
         description: 'Энергосберегающая LED лампа теплый белый',
-        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Philips+LED',
+        image: 'https://cdn.poehali.dev/files/3746304ref.jpg',
         inStock: true,
         reviews: [
           {
@@ -180,7 +180,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '1.2 кг',
         description: 'Уличный IP65 светодиодный прожектор',
-        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Osram+Light',
+        image: 'https://cdn.poehali.dev/files/2275716.jpg',
         inStock: true,
         reviews: [
           {
@@ -205,16 +205,16 @@ export const catalogThemes: CatalogTheme[] = [
       },
       {
         id: 6,
-        name: 'Люстра потолочная 3 плафона',
-        brand: 'Лючия',
+        name: 'Лампа LED свеча E14 9W',
+        brand: 'Feron',
         category: 'Освещение',
-        price: 5990,
-        power: '60 Вт',
+        price: 320,
+        power: '9 Вт',
         voltage: '220 В',
-        weight: '2.5 кг',
-        description: 'Современная потолочная люстра для гостиной',
-        image: 'https://via.placeholder.com/800x1000/fcd34d/000000?text=Chandelier',
-        inStock: false,
+        weight: '0.04 кг',
+        description: 'LED лампа форма свеча 4000K белый свет',
+        image: 'https://cdn.poehali.dev/files/5256453ref.jpg',
+        inStock: true,
         reviews: [
           {
             id: 1,
