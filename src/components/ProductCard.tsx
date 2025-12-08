@@ -65,6 +65,11 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, onToggleFav
       <CardHeader className="p-0 relative">
         <div className="relative overflow-hidden aspect-square">
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+            <div className="bg-black/40 backdrop-blur-sm px-6 py-3 rounded-lg border-2 border-white/30 rotate-[-15deg] shadow-2xl">
+              <p className="text-white font-bold text-lg tracking-wider">ПРИМЕР ТОВАРА</p>
+            </div>
+          </div>
           <img
             src={product.image}
             alt={product.name}

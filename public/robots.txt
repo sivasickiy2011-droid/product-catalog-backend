@@ -1,14 +1,42 @@
+User-agent: *
+Disallow: /
+
 User-agent: Googlebot
-Allow: /
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
 
 User-agent: Bingbot
-Allow: /
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: Mail.RU_Bot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
 
 User-agent: Twitterbot
-Allow: /
+Disallow: /
 
 User-agent: facebookexternalhit
-Allow: /
+Disallow: /
 
-User-agent: *
-Allow: /
+# Запретить всем ботам индексацию
+# Этот сайт является демо-примером товаров
+# Изображения с Pinterest используются только для демонстрации
