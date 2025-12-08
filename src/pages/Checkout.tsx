@@ -21,6 +21,9 @@ const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const cart = (location.state?.cart as CartItem[]) || [];
+  const appliedPromo = location.state?.appliedPromo || null;
+  const discount = location.state?.discount || 0;
+  const finalPrice = location.state?.finalPrice || cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const [formData, setFormData] = useState({
@@ -43,9 +46,11 @@ const Checkout = () => {
       id: Date.now(),
       date: new Date().toISOString(),
       items: cart,
-      total: totalPrice,
+      total: finalPrice,
       customer: formData,
       status: 'В обработке',
+      promoCode: appliedPromo?.code || null,
+      discount: discount,
     };
 
     const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
@@ -180,7 +185,7 @@ const Checkout = () => {
 
                   <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 shadow-lg shadow-primary/25 transition-all duration-300 text-lg py-6">
                     <Icon name="CheckCircle" className="h-5 w-5 mr-2" />
-                    Оформить заказ на {totalPrice.toLocaleString()} ₽
+                    Оформить заказ на {finalPrice.toLocaleString()} ₽
                   </Button>
                 </form>
               </CardContent>
@@ -207,10 +212,20 @@ const Checkout = () => {
                   ))}
                 </div>
 
-                <div className="border-t pt-4">
-                  <div className="flex justify-between text-lg font-bold">
-                    <span>Итого:</span>
+                <div className="border-t pt-4 space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Сумма товаров:</span>
                     <span>{totalPrice.toLocaleString()} ₽</span>
+                  </div>
+                  {appliedPromo && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-green-400">Скидка {appliedPromo.code}:</span>
+                      <span className="text-green-400">−{discount.toLocaleString()} ₽</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between text-xl font-bold pt-2 border-t">
+                    <span>Итого:</span>
+                    <span className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">{finalPrice.toLocaleString()} ₽</span>
                   </div>
                 </div>
 
