@@ -134,6 +134,7 @@ const Index = () => {
         priceRange={priceRange}
         categories={categories}
         brands={brands}
+        currentTheme={currentTheme}
         onCategoryChange={setSelectedCategory}
         onBrandChange={setSelectedBrand}
         onPriceRangeChange={setPriceRange}
