@@ -25,21 +25,19 @@ const ProductFilters = ({
   onPriceRangeChange
 }: ProductFiltersProps) => {
   return (
-    <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-xl">
-      <h3 className="font-semibold mb-6 flex items-center gap-3 text-lg">
-        <div className="p-2 rounded-lg bg-primary/10">
+    <Card className="p-6 bg-card/30 border-white/10 backdrop-blur-2xl shadow-lg">
+      <div className="flex flex-wrap items-center gap-6">
+        <div className="flex items-center gap-2">
           <Icon name="SlidersHorizontal" className="h-5 w-5 text-primary" />
+          <span className="font-semibold">Фильтры:</span>
         </div>
-        Фильтры
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <label className="text-sm font-medium mb-2 block">Категория</label>
+
+        <div className="flex-1 min-w-[200px]">
           <Select value={selectedCategory} onValueChange={onCategoryChange}>
-            <SelectTrigger>
-              <SelectValue />
+            <SelectTrigger className="bg-card/50 border-white/10">
+              <SelectValue placeholder="Категория" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-card/95 backdrop-blur-xl border-white/10">
               <SelectItem value="all">Все категории</SelectItem>
               {categories.filter(c => c !== 'all').map(cat => (
                 <SelectItem key={cat} value={cat}>{cat}</SelectItem>
@@ -48,13 +46,12 @@ const ProductFilters = ({
           </Select>
         </div>
 
-        <div>
-          <label className="text-sm font-medium mb-2 block">Бренд</label>
+        <div className="flex-1 min-w-[200px]">
           <Select value={selectedBrand} onValueChange={onBrandChange}>
-            <SelectTrigger>
-              <SelectValue />
+            <SelectTrigger className="bg-card/50 border-white/10">
+              <SelectValue placeholder="Бренд" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-card/95 backdrop-blur-xl border-white/10">
               <SelectItem value="all">Все бренды</SelectItem>
               {brands.filter(b => b !== 'all').map(brand => (
                 <SelectItem key={brand} value={brand}>{brand}</SelectItem>
@@ -63,16 +60,16 @@ const ProductFilters = ({
           </Select>
         </div>
 
-        <div>
-          <label className="text-sm font-medium mb-2 block">
-            Цена: {priceRange[0]} - {priceRange[1]} ₽
-          </label>
+        <div className="flex-1 min-w-[250px]">
+          <div className="text-sm mb-2 font-medium">
+            Цена: {priceRange[0].toLocaleString()} - {priceRange[1].toLocaleString()} ₽
+          </div>
           <Slider
             value={priceRange}
             onValueChange={onPriceRangeChange}
-            max={20000}
-            step={100}
-            className="mt-2"
+            max={40000000}
+            step={1000}
+            className="mt-1"
           />
         </div>
       </div>

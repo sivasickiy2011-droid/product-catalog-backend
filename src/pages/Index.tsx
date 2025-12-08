@@ -12,7 +12,7 @@ const Index = () => {
   const [showCompare, setShowCompare] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
-  const [priceRange, setPriceRange] = useState([0, 20000]);
+  const [priceRange, setPriceRange] = useState([0, 40000000]);
   const [currentTheme, setCurrentTheme] = useState<string>('electronics');
   const [isDarkMode, setIsDarkMode] = useState(true);
 
@@ -43,7 +43,7 @@ const Index = () => {
     setCurrentTheme(themeId);
     setSelectedCategory('all');
     setSelectedBrand('all');
-    setPriceRange([0, 20000]);
+    setPriceRange([0, 40000000]);
     setCompareList([]);
     toast.success(`Переключено на: ${catalogThemes.find(t => t.id === themeId)?.name}`);
   };
@@ -126,7 +126,7 @@ const Index = () => {
         onResetFilters={() => {
           setSelectedCategory('all');
           setSelectedBrand('all');
-          setPriceRange([0, 20000]);
+          setPriceRange([0, 40000000]);
         }}
         onAddToCart={addToCart}
         onToggleCompare={toggleCompare}

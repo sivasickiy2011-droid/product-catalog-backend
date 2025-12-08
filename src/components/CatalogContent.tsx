@@ -38,47 +38,41 @@ const CatalogContent = ({
 
   return (
     <main className="container py-12 relative">
-      <div className="mb-12 animate-slide-up">
+      <div className="mb-8 animate-slide-up">
         <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
-          Каталог электротоваров
+          Каталог товаров
         </h2>
         <p className="text-lg text-muted-foreground">
           Найдено {filteredProducts.length} товаров
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        <aside className="lg:w-80 shrink-0">
-          <div className="sticky top-24">
-            <ProductFilters
-              selectedCategory={selectedCategory}
-              selectedBrand={selectedBrand}
-              priceRange={priceRange}
-              categories={categories}
-              brands={brands}
-              onCategoryChange={onCategoryChange}
-              onBrandChange={onBrandChange}
-              onPriceRangeChange={onPriceRangeChange}
-              onResetFilters={onResetFilters}
-            />
-          </div>
-        </aside>
+      <div className="mb-8 sticky top-20 z-40">
+        <ProductFilters
+          selectedCategory={selectedCategory}
+          selectedBrand={selectedBrand}
+          priceRange={priceRange}
+          categories={categories}
+          brands={brands}
+          onCategoryChange={onCategoryChange}
+          onBrandChange={onBrandChange}
+          onPriceRangeChange={onPriceRangeChange}
+          onResetFilters={onResetFilters}
+        />
+      </div>
 
-        <div className="flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {filteredProducts.map((product, index) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                index={index}
-                onAddToCart={onAddToCart}
-                onToggleCompare={onToggleCompare}
-                isInCompare={compareList.some((p) => p.id === product.id)}
-                onProductClick={(product) => navigate(`/product/${product.id}`)}
-              />
-            ))}
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {filteredProducts.map((product, index) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            index={index}
+            onAddToCart={onAddToCart}
+            onToggleCompare={onToggleCompare}
+            isInCompare={compareList.some((p) => p.id === product.id)}
+            onProductClick={(product) => navigate(`/product/${product.id}`)}
+          />
+        ))}
       </div>
     </main>
   );
