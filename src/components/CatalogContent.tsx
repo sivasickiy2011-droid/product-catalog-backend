@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '@/components/ProductCard';
 import FashionProductCard from '@/components/FashionProductCard';
@@ -43,6 +44,29 @@ const CatalogContent = ({
 }: CatalogContentProps) => {
   const navigate = useNavigate();
   const isFashionTheme = currentTheme === 'fashion';
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (window.innerWidth < 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsFilterVisible(false);
+        } else {
+          setIsFilterVisible(true);
+        }
+      } else {
+        setIsFilterVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
     <main className="container py-6 md:py-12 relative px-4 md:px-6">
@@ -55,7 +79,9 @@ const CatalogContent = ({
         </p>
       </div>
 
-      <div className="mb-6 md:mb-8 sticky top-16 md:top-20 z-40">
+      <div className={`mb-6 md:mb-8 sticky top-16 md:top-20 z-40 transition-all duration-300 ${
+        isFilterVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      }`}>
         <ProductFilters
           selectedCategory={selectedCategory}
           selectedBrand={selectedBrand}
