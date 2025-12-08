@@ -4,15 +4,26 @@ import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import ShoppingCart from '@/components/ShoppingCart';
 import { CartItem } from '@/data/ProductData';
+import { catalogThemes } from '@/data/CatalogThemes';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface CatalogHeaderProps {
   cart: CartItem[];
   totalItems: number;
   totalPrice: number;
   compareListLength: number;
+  currentTheme: string;
+  isDarkMode: boolean;
   onUpdateQuantity: (id: number, quantity: number) => void;
   onRemoveFromCart: (id: number) => void;
   onShowCompare: () => void;
+  onThemeChange: (themeId: string) => void;
+  onToggleDarkMode: () => void;
 }
 
 const CatalogHeader = ({
@@ -20,23 +31,57 @@ const CatalogHeader = ({
   totalItems,
   totalPrice,
   compareListLength,
+  currentTheme,
+  isDarkMode,
   onUpdateQuantity,
   onRemoveFromCart,
   onShowCompare,
+  onThemeChange,
+  onToggleDarkMode,
 }: CatalogHeaderProps) => {
   const navigate = useNavigate();
+  const activeTheme = catalogThemes.find(t => t.id === currentTheme);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-card/40 backdrop-blur-xl supports-[backdrop-filter]:bg-card/40">
       <div className="container flex h-20 items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
-            <Icon name="Zap" className="h-8 w-8 text-primary relative" />
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3">
+            <div className="text-3xl">{activeTheme?.icon || '⚡'}</div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">
+              {activeTheme?.name || 'Каталог'}
+            </h1>
           </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">
-            ЭлектроМаркет
-          </h1>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="hover:bg-white/10 border-white/10">
+                <Icon name="Layers" className="h-4 w-4 mr-2" />
+                Каталог
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-card/95 backdrop-blur-xl border-white/10">
+              {catalogThemes.map(theme => (
+                <DropdownMenuItem
+                  key={theme.id}
+                  onClick={() => onThemeChange(theme.id)}
+                  className="cursor-pointer"
+                >
+                  <span className="mr-2 text-lg">{theme.icon}</span>
+                  {theme.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onToggleDarkMode}
+            className="hover:bg-white/10 border-white/10"
+          >
+            <Icon name={isDarkMode ? 'Sun' : 'Moon'} className="h-4 w-4" />
+          </Button>
         </div>
 
         <div className="flex items-center gap-4">

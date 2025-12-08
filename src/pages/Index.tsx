@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { toast } from 'sonner';
 import CompareDialog from '@/components/CompareDialog';
 import CatalogHeader from '@/components/CatalogHeader';
 import CatalogContent from '@/components/CatalogContent';
 import { Product, CartItem, products } from '@/data/ProductData';
+import { catalogThemes } from '@/data/CatalogThemes';
 
 const Index = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -12,18 +13,40 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
   const [priceRange, setPriceRange] = useState([0, 20000]);
+  const [currentTheme, setCurrentTheme] = useState<string>('fashion');
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const categories = ['all', ...Array.from(new Set(products.map(p => p.category)))];
-  const brands = ['all', ...Array.from(new Set(products.map(p => p.brand)))];
+  const activeThemeData = catalogThemes.find(t => t.id === currentTheme);
+  const currentProducts = activeThemeData?.products || products;
+
+  const categories = ['all', ...Array.from(new Set(currentProducts.map(p => p.category)))];
+  const brands = ['all', ...Array.from(new Set(currentProducts.map(p => p.brand)))];
 
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
+    return currentProducts.filter(product => {
       const categoryMatch = selectedCategory === 'all' || product.category === selectedCategory;
       const brandMatch = selectedBrand === 'all' || product.brand === selectedBrand;
       const priceMatch = product.price >= priceRange[0] && product.price <= priceRange[1];
       return categoryMatch && brandMatch && priceMatch;
     });
-  }, [selectedCategory, selectedBrand, priceRange]);
+  }, [currentProducts, selectedCategory, selectedBrand, priceRange]);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const handleThemeChange = (themeId: string) => {
+    setCurrentTheme(themeId);
+    setSelectedCategory('all');
+    setSelectedBrand('all');
+    setPriceRange([0, 20000]);
+    setCompareList([]);
+    toast.success(`Переключено на: ${catalogThemes.find(t => t.id === themeId)?.name}`);
+  };
 
   const addToCart = (product: Product) => {
     setCart(prev => {
@@ -80,9 +103,13 @@ const Index = () => {
         totalItems={totalItems}
         totalPrice={totalPrice}
         compareListLength={compareList.length}
+        currentTheme={currentTheme}
+        isDarkMode={isDarkMode}
         onUpdateQuantity={updateQuantity}
         onRemoveFromCart={removeFromCart}
         onShowCompare={() => setShowCompare(true)}
+        onThemeChange={handleThemeChange}
+        onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
       />
 
       <CatalogContent
