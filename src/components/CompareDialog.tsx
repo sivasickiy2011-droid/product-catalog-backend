@@ -26,6 +26,32 @@ interface CompareDialogProps {
 }
 
 const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAddToCart }: CompareDialogProps) => {
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'Электроинструменты':
+        return '#0EA5E9';
+      case 'Освещение':
+        return '#FCD34D';
+      case 'Кабели':
+        return '#8B5CF6';
+      default:
+        return '#9CA3AF';
+    }
+  };
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Электроинструменты':
+        return '🔧';
+      case 'Освещение':
+        return '💡';
+      case 'Кабели':
+        return '🔌';
+      default:
+        return '📦';
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[80vh] overflow-auto">
@@ -47,7 +73,12 @@ const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAdd
                   {compareList.map(product => (
                     <th key={product.id} className="p-4">
                       <div className="space-y-2">
-                        <img src={product.image} alt={product.name} className="w-full h-32 object-cover rounded" />
+                        <div 
+                          className="w-full h-32 rounded flex items-center justify-center text-4xl"
+                          style={{ backgroundColor: getCategoryColor(product.category) }}
+                        >
+                          {getCategoryIcon(product.category)}
+                        </div>
                         <p className="text-sm font-medium text-left">{product.name}</p>
                         <Button
                           variant="ghost"

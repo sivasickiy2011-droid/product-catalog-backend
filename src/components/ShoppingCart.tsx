@@ -31,6 +31,32 @@ interface ShoppingCartProps {
 }
 
 const ShoppingCart = ({ cart, totalItems, totalPrice, onUpdateQuantity, onRemoveFromCart }: ShoppingCartProps) => {
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'Электроинструменты':
+        return '#0EA5E9';
+      case 'Освещение':
+        return '#FCD34D';
+      case 'Кабели':
+        return '#8B5CF6';
+      default:
+        return '#9CA3AF';
+    }
+  };
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Электроинструменты':
+        return '🔧';
+      case 'Освещение':
+        return '💡';
+      case 'Кабели':
+        return '🔌';
+      default:
+        return '📦';
+    }
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -56,7 +82,12 @@ const ShoppingCart = ({ cart, totalItems, totalPrice, onUpdateQuantity, onRemove
             <Card key={item.id} className="animate-fade-in">
               <CardContent className="p-4">
                 <div className="flex gap-4">
-                  <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
+                  <div 
+                    className="w-20 h-20 rounded flex items-center justify-center text-3xl flex-shrink-0"
+                    style={{ backgroundColor: getCategoryColor(item.category) }}
+                  >
+                    {getCategoryIcon(item.category)}
+                  </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-sm">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">{item.price.toLocaleString()} ₽</p>

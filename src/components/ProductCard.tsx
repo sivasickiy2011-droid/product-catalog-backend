@@ -26,15 +26,42 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare }: ProductCardProps) => {
+  const getCategoryColor = () => {
+    switch (product.category) {
+      case 'Электроинструменты':
+        return '#0EA5E9';
+      case 'Освещение':
+        return '#FCD34D';
+      case 'Кабели':
+        return '#8B5CF6';
+      default:
+        return '#9CA3AF';
+    }
+  };
+
+  const getCategoryIcon = () => {
+    switch (product.category) {
+      case 'Электроинструменты':
+        return '🔧';
+      case 'Освещение':
+        return '💡';
+      case 'Кабели':
+        return '🔌';
+      default:
+        return '📦';
+    }
+  };
+
   return (
     <Card className="flex flex-col animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
       <CardHeader className="p-0">
         <div className="relative">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-48 object-cover rounded-t-lg"
-          />
+          <div 
+            className="w-full h-48 rounded-t-lg flex items-center justify-center text-6xl"
+            style={{ backgroundColor: getCategoryColor() }}
+          >
+            {getCategoryIcon()}
+          </div>
           {!product.inStock && (
             <Badge variant="destructive" className="absolute top-2 right-2">
               Нет в наличии
