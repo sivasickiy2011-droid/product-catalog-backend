@@ -19,13 +19,12 @@ interface Product {
 
 interface CompareDialogProps {
   open: boolean;
-  compareList: Product[];
+  products: Product[];
   onOpenChange: (open: boolean) => void;
-  onToggleCompare: (product: Product) => void;
-  onAddToCart: (product: Product) => void;
+  onRemoveProduct: (id: number) => void;
 }
 
-const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAddToCart }: CompareDialogProps) => {
+const CompareDialog = ({ open, products, onOpenChange, onRemoveProduct }: CompareDialogProps) => {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'Электроинструменты':
@@ -66,13 +65,13 @@ const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAdd
             Сравните характеристики выбранных товаров
           </DialogDescription>
         </DialogHeader>
-        {compareList.length > 0 ? (
+        {products.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-6 font-semibold text-lg bg-card/50">Характеристика</th>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <th key={product.id} className="p-4 bg-card/50">
                       <div className="space-y-3">
                         <div 
@@ -86,7 +85,7 @@ const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAdd
                         <Button
                           variant="ghost"
                           size="sm"
-                          onClick={() => onToggleCompare(product)}
+                          onClick={() => onRemoveProduct(product.id)}
                           className="w-full hover:bg-destructive/10 hover:text-destructive transition-all"
                         >
                           <Icon name="X" className="h-4 w-4 mr-1" />
@@ -100,13 +99,13 @@ const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAdd
               <tbody>
                 <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                   <td className="p-5 font-medium">Бренд</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center">{product.brand}</td>
                   ))}
                 </tr>
                 <tr className="border-b border-white/5 bg-white/5 hover:bg-white/10 transition-colors">
                   <td className="p-5 font-medium">Цена</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center font-bold text-lg bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
                       {product.price.toLocaleString()} ₽
                     </td>
@@ -114,45 +113,31 @@ const CompareDialog = ({ open, compareList, onOpenChange, onToggleCompare, onAdd
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                   <td className="p-5 font-medium">Мощность</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center">{product.power}</td>
                   ))}
                 </tr>
                 <tr className="border-b border-white/5 bg-white/5 hover:bg-white/10 transition-colors">
                   <td className="p-5 font-medium">Напряжение</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center">{product.voltage}</td>
                   ))}
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                   <td className="p-5 font-medium">Вес</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center">{product.weight}</td>
                   ))}
                 </tr>
                 <tr className="border-b border-white/5 bg-white/5 hover:bg-white/10 transition-colors">
                   <td className="p-5 font-medium">Наличие</td>
-                  {compareList.map(product => (
+                  {products.map(product => (
                     <td key={product.id} className="p-5 text-center">
                       {product.inStock ? (
                         <Badge variant="default" className="bg-green-500/20 text-green-400 border-green-500/30">В наличии</Badge>
                       ) : (
                         <Badge variant="destructive" className="bg-red-500/20 text-red-400 border-red-500/30">Нет</Badge>
                       )}
-                    </td>
-                  ))}
-                </tr>
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="p-5 font-medium">Действие</td>
-                  {compareList.map(product => (
-                    <td key={product.id} className="p-5">
-                      <Button
-                        className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 shadow-lg shadow-primary/25 transition-all duration-300"
-                        onClick={() => onAddToCart(product)}
-                        disabled={!product.inStock}
-                      >
-                        В корзину
-                      </Button>
                     </td>
                   ))}
                 </tr>
