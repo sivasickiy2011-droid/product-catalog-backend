@@ -62,11 +62,15 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Zap" className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-bold">ЭлектроМаркет</h1>
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-card/40 backdrop-blur-xl">
+        <div className="container flex h-20 items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
+              <Icon name="Zap" className="h-8 w-8 text-primary relative" />
+            </div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">ЭлектроМаркет</h1>
           </div>
           <Button variant="outline" onClick={() => navigate('/')}>
             <Icon name="Home" className="h-4 w-4 mr-2" />
@@ -75,19 +79,19 @@ const Profile = () => {
         </div>
       </header>
 
-      <main className="container py-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Личный кабинет</h2>
-          <p className="text-muted-foreground">Управление заказами и профилем</p>
+      <main className="container py-12 relative">
+        <div className="mb-12 animate-slide-up">
+          <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">Личный кабинет</h2>
+          <p className="text-lg text-muted-foreground">Управление заказами и профилем</p>
         </div>
 
-        <Tabs defaultValue="orders" className="space-y-6">
-          <TabsList>
-            <TabsTrigger value="orders" className="gap-2">
+        <Tabs defaultValue="orders" className="space-y-8">
+          <TabsList className="bg-card/50 border border-white/10 backdrop-blur-xl p-1">
+            <TabsTrigger value="orders" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">
               <Icon name="Package" className="h-4 w-4" />
               История заказов
             </TabsTrigger>
-            <TabsTrigger value="profile" className="gap-2">
+            <TabsTrigger value="profile" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">
               <Icon name="User" className="h-4 w-4" />
               Профиль
             </TabsTrigger>
@@ -109,21 +113,21 @@ const Profile = () => {
                 </CardContent>
               </Card>
             ) : (
-              orders.map((order) => (
-                <Card key={order.id} className="animate-fade-in">
+              orders.map((order, idx) => (
+                <Card key={order.id} className="animate-fade-in bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500" style={{ animationDelay: `${idx * 0.1}s` }}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="flex items-center gap-2">
+                        <CardTitle className="flex items-center gap-3 text-xl">
                           Заказ №{order.id}
-                          <Badge variant={getStatusColor(order.status)}>{order.status}</Badge>
+                          <Badge variant={getStatusColor(order.status)} className="px-3 py-1">{order.status}</Badge>
                         </CardTitle>
                         <CardDescription className="mt-1">
                           {formatDate(order.date)}
                         </CardDescription>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-primary">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
                           {order.total.toLocaleString()} ₽
                         </div>
                         <div className="text-sm text-muted-foreground">
@@ -188,7 +192,7 @@ const Profile = () => {
           </TabsContent>
 
           <TabsContent value="profile">
-            <Card>
+            <Card className="bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-2xl animate-slide-up">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Icon name="User" className="h-5 w-5" />
@@ -197,9 +201,12 @@ const Profile = () => {
                 <CardDescription>Данные вашего аккаунта</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icon name="User" className="h-10 w-10 text-primary" />
+                <div className="flex items-center gap-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/30 blur-2xl rounded-full" />
+                    <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center relative shadow-lg shadow-primary/50">
+                      <Icon name="User" className="h-12 w-12 text-white" />
+                    </div>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">Гость</h3>

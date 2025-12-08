@@ -25,12 +25,14 @@ const ProductFilters = ({
   onPriceRangeChange
 }: ProductFiltersProps) => {
   return (
-    <Card className="p-6">
-      <h3 className="font-semibold mb-4 flex items-center gap-2">
-        <Icon name="SlidersHorizontal" className="h-5 w-5" />
+    <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-xl">
+      <h3 className="font-semibold mb-6 flex items-center gap-3 text-lg">
+        <div className="p-2 rounded-lg bg-primary/10">
+          <Icon name="SlidersHorizontal" className="h-5 w-5 text-primary" />
+        </div>
         Фильтры
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <label className="text-sm font-medium mb-2 block">Категория</label>
           <Select value={selectedCategory} onValueChange={onCategoryChange}>

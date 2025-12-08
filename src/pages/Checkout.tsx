@@ -89,11 +89,15 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Zap" className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-bold">ЭлектроМаркет</h1>
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-card/40 backdrop-blur-xl">
+        <div className="container flex h-20 items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
+              <Icon name="Zap" className="h-8 w-8 text-primary relative" />
+            </div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">ЭлектроМаркет</h1>
           </div>
           <Button variant="outline" onClick={() => navigate('/')}>
             <Icon name="ArrowLeft" className="h-4 w-4 mr-2" />
@@ -102,15 +106,15 @@ const Checkout = () => {
         </div>
       </header>
 
-      <main className="container py-8">
-        <h2 className="text-3xl font-bold mb-8">Оформление заказа</h2>
+      <main className="container py-12 relative">
+        <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent animate-slide-up">Оформление заказа</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-2xl animate-slide-up">
               <CardHeader>
-                <CardTitle>Контактные данные</CardTitle>
-                <CardDescription>Укажите информацию для доставки</CardDescription>
+                <CardTitle className="text-2xl">Контактные данные</CardTitle>
+                <CardDescription className="text-base">Укажите информацию для доставки</CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -174,7 +178,7 @@ const Checkout = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 shadow-lg shadow-primary/25 transition-all duration-300 text-lg py-6">
                     <Icon name="CheckCircle" className="h-5 w-5 mr-2" />
                     Оформить заказ на {totalPrice.toLocaleString()} ₽
                   </Button>
@@ -184,10 +188,10 @@ const Checkout = () => {
           </div>
 
           <div>
-            <Card className="sticky top-24">
+            <Card className="sticky top-24 bg-gradient-to-br from-card to-card/50 border-white/10 backdrop-blur-xl shadow-2xl animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
-                <CardTitle>Ваш заказ</CardTitle>
-                <CardDescription>{cart.length} товаров</CardDescription>
+                <CardTitle className="text-2xl">Ваш заказ</CardTitle>
+                <CardDescription className="text-base">{cart.length} товаров</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">

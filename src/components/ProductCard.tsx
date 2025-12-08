@@ -53,14 +53,17 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
   };
 
   return (
-    <Card className="flex flex-col animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
+    <Card className="group flex flex-col animate-fade-in hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 overflow-hidden bg-gradient-to-br from-card to-card/50 border-white/10" style={{ animationDelay: `${index * 0.05}s` }}>
       <CardHeader className="p-0">
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <div 
-            className="w-full h-48 rounded-t-lg flex items-center justify-center text-6xl"
-            style={{ backgroundColor: getCategoryColor() }}
+            className="w-full h-56 flex items-center justify-center text-7xl transition-all duration-500 group-hover:scale-110 relative"
+            style={{ 
+              background: `linear-gradient(135deg, ${getCategoryColor()}dd, ${getCategoryColor()}55)`,
+            }}
           >
-            {getCategoryIcon()}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <span className="relative z-10 drop-shadow-2xl">{getCategoryIcon()}</span>
           </div>
           {!product.inStock && (
             <Badge variant="destructive" className="absolute top-2 right-2">
@@ -69,10 +72,10 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
           )}
         </div>
       </CardHeader>
-      <CardContent className="flex-1 p-4">
-        <Badge variant="outline" className="mb-2">{product.brand}</Badge>
-        <CardTitle className="text-base mb-2 line-clamp-2">{product.name}</CardTitle>
-        <CardDescription className="text-xs mb-3 line-clamp-2">{product.description}</CardDescription>
+      <CardContent className="flex-1 p-5">
+        <Badge variant="outline" className="mb-3 bg-white/5 border-white/10 backdrop-blur-sm">{product.brand}</Badge>
+        <CardTitle className="text-lg mb-2 line-clamp-2 font-semibold">{product.name}</CardTitle>
+        <CardDescription className="text-sm mb-4 line-clamp-2 opacity-70">{product.description}</CardDescription>
         <div className="space-y-1 text-xs text-muted-foreground">
           <div className="flex justify-between">
             <span>Мощность:</span>
@@ -84,13 +87,13 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0 flex-col gap-2">
+      <CardFooter className="p-5 pt-0 flex-col gap-3">
         <div className="flex items-center justify-between w-full mb-2">
-          <span className="text-2xl font-bold text-primary">{product.price.toLocaleString()} ₽</span>
+          <span className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">{product.price.toLocaleString()} ₽</span>
         </div>
         <div className="flex gap-2 w-full">
           <Button
-            className="flex-1"
+            className="flex-1 bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 shadow-lg shadow-primary/25 transition-all duration-300"
             onClick={() => onAddToCart(product)}
             disabled={!product.inStock}
           >
@@ -101,7 +104,7 @@ const ProductCard = ({ product, index, onAddToCart, onToggleCompare, isInCompare
             variant="outline"
             size="icon"
             onClick={() => onToggleCompare(product)}
-            className={isInCompare ? 'bg-primary text-primary-foreground' : ''}
+            className={`border-white/10 transition-all duration-300 ${isInCompare ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/50' : 'hover:bg-white/10'}`}
           >
             <Icon name="GitCompare" className="h-4 w-4" />
           </Button>
