@@ -16,12 +16,14 @@ interface FashionFiltersProps {
   priceRange: number[];
   selectedSizes: string[];
   selectedColors: string[];
+  isCollapsed: boolean;
   onBrandChange: (brand: string) => void;
   onCategoryChange: (category: string) => void;
   onPriceRangeChange: (range: number[]) => void;
   onSizeToggle: (size: string) => void;
   onColorToggle: (color: string) => void;
   onResetFilters: () => void;
+  onToggleCollapse: () => void;
 }
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
@@ -43,12 +45,14 @@ const FashionFilters = ({
   priceRange,
   selectedSizes,
   selectedColors,
+  isCollapsed,
   onBrandChange,
   onCategoryChange,
   onPriceRangeChange,
   onSizeToggle,
   onColorToggle,
   onResetFilters,
+  onToggleCollapse,
 }: FashionFiltersProps) => {
   const [openSections, setOpenSections] = useState({
     designers: true,
@@ -67,23 +71,45 @@ const FashionFilters = ({
                           priceRange[0] !== 0 || priceRange[1] !== 500000;
 
   return (
-    <aside className="w-full lg:w-80 flex-shrink-0 space-y-2 animate-fade-in">
+    <aside className={`flex-shrink-0 space-y-2 transition-all duration-500 ease-in-out ${
+      isCollapsed ? 'w-12' : 'w-full lg:w-80'
+    }`}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold flex items-center gap-2">
-          <Icon name="SlidersHorizontal" size={20} />
-          Фильтры
-        </h3>
-        {hasActiveFilters && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onResetFilters}
-            className="text-xs hover:bg-white/5"
-          >
-            Сбросить
-          </Button>
+        {!isCollapsed && (
+          <>
+            <h3 className="text-lg font-semibold flex items-center gap-2 animate-fade-in">
+              <Icon name="SlidersHorizontal" size={20} />
+              Фильтры
+            </h3>
+            {hasActiveFilters && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onResetFilters}
+                className="text-xs hover:bg-white/5 animate-fade-in"
+              >
+                Сбросить
+              </Button>
+            )}
+          </>
         )}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onToggleCollapse}
+          className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 transition-all ml-auto"
+          title={isCollapsed ? 'Показать фильтры' : 'Скрыть фильтры'}
+        >
+          <Icon 
+            name={isCollapsed ? 'ChevronRight' : 'ChevronLeft'} 
+            size={20} 
+            className="transition-transform"
+          />
+        </Button>
       </div>
+      
+      {!isCollapsed && (
+        <div className="animate-fade-in">{/* Wrapper for collapsible content */}
 
       <Collapsible open={openSections.designers} onOpenChange={() => toggleSection('designers')}>
         <CollapsibleTrigger className="w-full group">
@@ -253,6 +279,8 @@ const FashionFilters = ({
           </div>
         </CollapsibleContent>
       </Collapsible>
+      </div>
+      )}
     </aside>
   );
 };

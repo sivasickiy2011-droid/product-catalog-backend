@@ -27,6 +27,7 @@ const Index = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('gallery');
   const [currentTheme, setCurrentTheme] = useState<string>(initialTheme);
   const [isDarkMode, setIsDarkMode] = useState(initialTheme === 'fashion');
+  const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
   const activeThemeData = catalogThemes.find(t => t.id === currentTheme);
   const currentProducts = activeThemeData?.products || products;
@@ -214,12 +215,14 @@ const Index = () => {
                 priceRange={priceRange}
                 selectedSizes={selectedSizes}
                 selectedColors={selectedColors}
+                isCollapsed={filtersCollapsed}
                 onBrandChange={setSelectedBrand}
                 onCategoryChange={setSelectedCategory}
                 onPriceRangeChange={setPriceRange}
                 onSizeToggle={toggleSize}
                 onColorToggle={toggleColor}
                 onResetFilters={handleResetFilters}
+                onToggleCollapse={() => setFiltersCollapsed(!filtersCollapsed)}
               />
             </div>
 

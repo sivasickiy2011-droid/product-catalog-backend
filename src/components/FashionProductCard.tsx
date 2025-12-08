@@ -88,11 +88,11 @@ const FashionProductCard = ({
               <span className="font-medium">{product.power}</span>
             </div>
             <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
-              <Icon name="Package" className="h-5 w-5" />
+              <Icon name="Shirt" className="h-5 w-5" />
               <span className="font-medium">{product.voltage}</span>
             </div>
             <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
-              <Icon name="Shirt" className="h-5 w-5" />
+              <Icon name="Package" className="h-5 w-5" />
               <span className="font-medium">{product.weight}</span>
             </div>
           </div>
@@ -237,13 +237,9 @@ const FashionProductCard = ({
             <Icon name="Ruler" className="h-4 w-4" />
             <span>{product.power}</span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-            <Icon name="Package" className="h-4 w-4" />
-            <span>{product.voltage}</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <div className="flex items-center gap-2 text-sm font-medium text-primary">
             <Icon name="Shirt" className="h-4 w-4" />
-            <span>{product.weight}</span>
+            <span>{product.voltage}</span>
           </div>
         </div>
 
