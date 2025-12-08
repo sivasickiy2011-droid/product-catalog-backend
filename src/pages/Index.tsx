@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 import CompareDialog from '@/components/CompareDialog';
 import CatalogHeader from '@/components/CatalogHeader';
@@ -11,18 +12,21 @@ import { Product, CartItem, products } from '@/data/ProductData';
 import { catalogThemes } from '@/data/CatalogThemes';
 
 const Index = () => {
+  const location = useLocation();
+  const initialTheme = location.pathname === '/fashion' ? 'fashion' : 'electronics';
+  
   const [cart, setCart] = useState<CartItem[]>([]);
   const [compareList, setCompareList] = useState<Product[]>([]);
   const [favoritesList, setFavoritesList] = useState<Product[]>([]);
   const [showCompare, setShowCompare] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('Все');
   const [selectedBrand, setSelectedBrand] = useState<string>('Все');
-  const [priceRange, setPriceRange] = useState([0, 500000]);
+  const [priceRange, setPriceRange] = useState(initialTheme === 'fashion' ? [0, 500000] : [0, 40000000]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>('gallery');
-  const [currentTheme, setCurrentTheme] = useState<string>('fashion');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [currentTheme, setCurrentTheme] = useState<string>(initialTheme);
+  const [isDarkMode, setIsDarkMode] = useState(initialTheme === 'fashion');
 
   const activeThemeData = catalogThemes.find(t => t.id === currentTheme);
   const currentProducts = activeThemeData?.products || products;

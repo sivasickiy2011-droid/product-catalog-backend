@@ -46,12 +46,15 @@ const CatalogHeader = ({
     <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-card/40 backdrop-blur-xl supports-[backdrop-filter]:bg-card/40">
       <div className="container flex h-auto min-h-[64px] md:h-20 items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-0">
         <div className="flex items-center gap-2 md:gap-6 flex-wrap md:flex-nowrap">
-          <div className="flex items-center gap-2 md:gap-3">
+          <button 
+            onClick={() => navigate(currentTheme === 'fashion' ? '/fashion' : '/')}
+            className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity"
+          >
             <div className="text-2xl md:text-3xl">{activeTheme?.icon || '⚡'}</div>
             <h1 className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">
               {activeTheme?.name || 'Каталог'}
             </h1>
-          </div>
+          </button>
 
           <div className="flex items-center gap-2">
             <DropdownMenu>
@@ -65,7 +68,14 @@ const CatalogHeader = ({
                 {catalogThemes.map(theme => (
                   <DropdownMenuItem
                     key={theme.id}
-                    onClick={() => onThemeChange(theme.id)}
+                    onClick={() => {
+                      if (theme.id === 'fashion') {
+                        navigate('/fashion');
+                      } else {
+                        navigate('/');
+                      }
+                      onThemeChange(theme.id);
+                    }}
                     className="cursor-pointer"
                   >
                     <span className="mr-2 text-lg">{theme.icon}</span>
