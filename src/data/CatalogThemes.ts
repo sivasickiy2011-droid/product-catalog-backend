@@ -48,7 +48,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.5 кг',
         description: 'Профессиональный инструмент для сверления и завинчивания',
-        image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -114,7 +114,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.1 кг',
         description: 'Компактная УШМ для резки и шлифовки',
-        image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -147,7 +147,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.05 кг',
         description: 'Энергосберегающая LED лампа теплый белый',
-        image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1602080858428-57174f9431cf?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -180,7 +180,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '1.2 кг',
         description: 'Уличный IP65 светодиодный прожектор',
-        image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80',
+        image: 'https://images.pexels.com/photos/3683056/pexels-photo-3683056.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
         reviews: [
           {
@@ -213,7 +213,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.5 кг',
         description: 'Современная потолочная люстра для гостиной',
-        image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1545318813-f0447d1e1ac3?w=800&q=80',
         inStock: false,
         reviews: [
           {
@@ -246,7 +246,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '15 кг',
         description: 'Силовой кабель для скрытой проводки',
-        image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -279,7 +279,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '0.6 кг',
         description: 'Сетевой фильтр с защитой от перегрузки',
-        image: 'https://images.unsplash.com/photo-1591290619762-f1380021e5b1?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&q=80',
         inStock: true,
         reviews: [
           {
@@ -312,7 +312,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '220 В',
         weight: '2.3 кг',
         description: 'Электролобзик для фигурной резки дерева и металла',
-        image: 'https://images.pexels.com/photos/6368850/pexels-photo-6368850.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/5691621/pexels-photo-5691621.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
         reviews: [
           {
@@ -345,7 +345,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '18 В',
         weight: '1.8 кг',
         description: 'Ударный шуруповерт с бесщеточным двигателем',
-        image: 'https://images.pexels.com/photos/5691772/pexels-photo-5691772.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/5691589/pexels-photo-5691589.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
         reviews: [
           {
@@ -386,7 +386,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 120 см',
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
-        image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80',
+        image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -399,7 +399,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шерсть 100%',
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
-        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
+        image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -412,7 +412,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Кожа телёнка',
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
-        image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80',
+        image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -425,7 +425,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 10 см',
         weight: '0.6 кг',
         description: 'Классические туфли на каблуке из лакированной кожи',
-        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80',
+        image: 'https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -464,7 +464,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Твид букле',
         weight: '0.8 кг',
         description: 'Женский костюм в стиле Коко Шанель',
-        image: 'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/2235071/pexels-photo-2235071.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -477,7 +477,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Каблук 8 см',
         weight: '0.8 кг',
         description: 'Замшевые ботильоны на устойчивом каблуке',
-        image: 'https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -490,7 +490,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Шелк 100%',
         weight: '0.1 кг',
         description: 'Фирменный платок-каре с авторским принтом',
-        image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/10373965/pexels-photo-10373965.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -503,7 +503,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Длина 95 см',
         weight: '0.5 кг',
         description: 'Платье-футляр с кружевной отделкой',
-        image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
     ],
@@ -602,7 +602,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 6.2 сек',
         weight: '1770 кг',
         description: 'Бизнес-седан с передовыми технологиями',
-        image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -615,7 +615,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Полный привод',
         weight: '2045 кг',
         description: 'Премиальный кроссовер с безупречной надёжностью',
-        image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -628,7 +628,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Запас 500 км',
         weight: '1847 кг',
         description: 'Спортивный электроседан с автопилотом',
-        image: 'https://images.pexels.com/photos/258083/pexels-photo-258083.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -641,7 +641,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: 'Разгон 2.9 сек',
         weight: '1330 кг',
         description: 'Среднемоторный суперкар с двигателем V8',
-        image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/3802503/pexels-photo-3802503.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
     ],
@@ -727,7 +727,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '140+ часов',
         weight: 'Портфолио',
         description: 'Создание визуального контента в Adobe Suite',
-        image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
@@ -740,7 +740,7 @@ export const catalogThemes: CatalogTheme[] = [
         voltage: '120+ часов',
         weight: 'Сертификат',
         description: 'Продвижение в социальных сетях с нуля',
-        image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
+        image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800',
         inStock: true,
       },
       {
