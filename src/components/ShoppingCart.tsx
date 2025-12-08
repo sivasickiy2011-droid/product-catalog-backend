@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -31,6 +32,8 @@ interface ShoppingCartProps {
 }
 
 const ShoppingCart = ({ cart, totalItems, totalPrice, onUpdateQuantity, onRemoveFromCart }: ShoppingCartProps) => {
+  const navigate = useNavigate();
+
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'Электроинструменты':
@@ -55,6 +58,10 @@ const ShoppingCart = ({ cart, totalItems, totalPrice, onUpdateQuantity, onRemove
       default:
         return '📦';
     }
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { cart } });
   };
 
   return (
@@ -128,7 +135,7 @@ const ShoppingCart = ({ cart, totalItems, totalPrice, onUpdateQuantity, onRemove
               <span>Итого:</span>
               <span>{totalPrice.toLocaleString()} ₽</span>
             </div>
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="lg" onClick={handleCheckout}>
               Оформить заказ
             </Button>
           </div>

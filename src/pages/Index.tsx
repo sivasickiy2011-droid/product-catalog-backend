@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
@@ -134,6 +135,7 @@ const products: Product[] = [
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [compareList, setCompareList] = useState<Product[]>([]);
   const [showCompare, setShowCompare] = useState(false);
@@ -209,6 +211,15 @@ const Index = () => {
           </div>
           
           <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/profile')}
+            >
+              <Icon name="User" className="h-4 w-4 mr-2" />
+              Профиль
+            </Button>
+
             <Button
               variant="outline"
               size="sm"
