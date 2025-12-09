@@ -41,11 +41,11 @@ const FashionProductCard = ({
   if (viewMode === 'magazine') {
     return (
       <div 
-        className="group relative flex flex-col md:flex-row gap-8 animate-fade-in overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer p-8" 
+        className="group relative flex flex-col md:flex-row gap-4 md:gap-8 animate-fade-in overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer p-4 md:p-8" 
         style={{ animationDelay: `${index * 0.1}s` }}
         onClick={() => onProductClick(product)}
       >
-        <div className="relative md:w-1/2 aspect-[3/4] overflow-hidden rounded-xl">
+        <div className="relative w-full md:w-1/2 aspect-[3/4] overflow-hidden rounded-xl">
           <img
             src={product.image}
             alt={product.name}
@@ -69,20 +69,20 @@ const FashionProductCard = ({
           </Button>
         </div>
 
-        <div className="md:w-1/2 flex flex-col justify-center space-y-6">
+        <div className="w-full md:w-1/2 flex flex-col justify-center space-y-4 md:space-y-6">
           <div>
-            <div className="text-sm font-bold tracking-widest text-primary uppercase mb-2">
+            <div className="text-xs md:text-sm font-bold tracking-widest text-primary uppercase mb-2">
               {product.brand}
             </div>
-            <h3 className="text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-3 md:mb-4">
               {product.name}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               {product.description}
             </p>
           </div>
 
-          <div className="space-y-3 py-6 border-y border-gray-200 dark:border-gray-700">
+          <div className="space-y-2 md:space-y-3 py-4 md:py-6 border-y border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
               <Icon name="Ruler" className="h-5 w-5" />
               <span className="font-medium">{product.power}</span>
@@ -97,10 +97,10 @@ const FashionProductCard = ({
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4">
             <div className="flex flex-col">
-              <span className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Цена</span>
-              <span className="text-4xl font-bold text-gray-900 dark:text-white">
+              <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Цена</span>
+              <span className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 {product.price.toLocaleString()} ₽
               </span>
             </div>
@@ -111,7 +111,7 @@ const FashionProductCard = ({
               }}
               disabled={!product.inStock}
               size="lg"
-              className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-8 py-6 text-base font-semibold uppercase tracking-wider"
+              className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-6 md:px-8 py-4 md:py-6 text-sm md:text-base font-semibold uppercase tracking-wider w-full sm:w-auto"
             >
               Купить
             </Button>
@@ -182,11 +182,11 @@ const FashionProductCard = ({
 
   return (
     <div 
-      className="group relative flex flex-col animate-fade-in overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" 
+      className="group relative flex flex-col animate-fade-in overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer w-full" 
       style={{ animationDelay: `${index * 0.05}s` }}
       onClick={() => onProductClick(product)}
     >
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden w-full">
         <img
           src={product.image}
           alt={product.name}
@@ -222,17 +222,17 @@ const FashionProductCard = ({
         )}
       </div>
 
-      <div className="p-5 space-y-4 bg-white dark:bg-gray-900">
-        <div className="space-y-2">
+      <div className="p-4 md:p-5 space-y-3 md:space-y-4 bg-white dark:bg-gray-900">
+        <div className="space-y-1 md:space-y-2">
           <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
             {product.category}
           </p>
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+          <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
             {product.name}
           </h3>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 md:space-y-2">
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
             <Icon name="Ruler" className="h-4 w-4" />
             <span>{product.power}</span>
@@ -243,10 +243,10 @@ const FashionProductCard = ({
           </div>
         </div>
 
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="pt-3 md:pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="flex flex-col">
             <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Цена</span>
-            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+            <span className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white">
               {product.price.toLocaleString()} ₽
             </span>
           </div>
@@ -256,7 +256,7 @@ const FashionProductCard = ({
               onAddToCart(product);
             }}
             disabled={!product.inStock}
-            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-4 sm:px-6 py-3 sm:py-6 text-xs sm:text-sm font-semibold uppercase tracking-wider w-full sm:w-auto"
+            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 px-4 md:px-6 py-2.5 md:py-3 text-xs md:text-sm font-semibold uppercase tracking-wider w-full sm:w-auto"
           >
             Купить
           </Button>
