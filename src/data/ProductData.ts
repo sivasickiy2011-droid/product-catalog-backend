@@ -9,6 +9,7 @@ export interface Product {
   weight: string;
   description: string;
   image: string;
+  images?: string[];
   inStock: boolean;
 }
 

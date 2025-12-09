@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -21,6 +22,9 @@ const FashionProductModal = ({
   onToggleFavorite,
   isInFavorites,
 }: FashionProductModalProps) => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const images = product.images || [product.image];
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-7xl w-[calc(100vw-2rem)] max-w-[95vw] h-auto max-h-[95vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
@@ -29,16 +33,40 @@ const FashionProductModal = ({
         </DialogClose>
 
         <div className="grid md:grid-cols-2 gap-3 md:gap-8 p-3 md:p-8">
-          <div className="relative aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-            {!product.inStock && (
-              <Badge variant="destructive" className="absolute top-2 right-2 md:top-4 md:right-4 shadow-lg text-xs md:text-base px-2 py-1 md:px-4 md:py-2">
-                Нет в наличии
-              </Badge>
+          <div className="space-y-3 md:space-y-4">
+            <div className="relative aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src={images[selectedImageIndex]}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+              {!product.inStock && (
+                <Badge variant="destructive" className="absolute top-2 right-2 md:top-4 md:right-4 shadow-lg text-xs md:text-base px-2 py-1 md:px-4 md:py-2">
+                  Нет в наличии
+                </Badge>
+              )}
+            </div>
+
+            {images.length > 1 && (
+              <div className="grid grid-cols-4 gap-2 md:gap-3">
+                {images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`relative aspect-square rounded-md md:rounded-lg overflow-hidden transition-all ${
+                      selectedImageIndex === index
+                        ? 'ring-2 ring-primary shadow-lg scale-105'
+                        : 'opacity-60 hover:opacity-100 hover:scale-105'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${product.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
             )}
           </div>
 

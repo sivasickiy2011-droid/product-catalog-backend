@@ -19,6 +19,7 @@ export interface ThemeProduct {
   weight: string;
   description: string;
   image: string;
+  images?: string[];
   inStock: boolean;
   reviews?: Review[];
 }
@@ -223,6 +224,12 @@ export const catalogThemes: CatalogTheme[] = [
         weight: '0.4 кг',
         description: 'Элегантное вечернее платье из шелка с вышивкой',
         image: 'https://cdn.poehali.dev/files/gettyimages-1847199028-1024x1024.jpg',
+        images: [
+          'https://cdn.poehali.dev/files/gettyimages-1847199028-1024x1024.jpg',
+          'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80',
+          'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80',
+          'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80'
+        ],
         inStock: true,
       },
       {
@@ -236,6 +243,12 @@ export const catalogThemes: CatalogTheme[] = [
         weight: '1.2 кг',
         description: 'Классический мужской костюм из шерсти Super 120s',
         image: 'https://cdn.poehali.dev/files/gettyimages-1462655622-1024x1024.jpg',
+        images: [
+          'https://cdn.poehali.dev/files/gettyimages-1462655622-1024x1024.jpg',
+          'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80',
+          'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&q=80',
+          'https://images.unsplash.com/photo-1593030668990-8d3eaaa0a5ef?w=800&q=80'
+        ],
         inStock: true,
       },
       {
@@ -249,6 +262,12 @@ export const catalogThemes: CatalogTheme[] = [
         weight: '0.9 кг',
         description: 'Дизайнерская сумка из натуральной телячьей кожи',
         image: 'https://cdn.poehali.dev/files/gettyimages-1347455404-1024x1024.jpg',
+        images: [
+          'https://cdn.poehali.dev/files/gettyimages-1347455404-1024x1024.jpg',
+          'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80',
+          'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80',
+          'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=800&q=80'
+        ],
         inStock: true,
       },
       {
