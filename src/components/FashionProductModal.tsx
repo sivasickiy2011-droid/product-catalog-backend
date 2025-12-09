@@ -23,12 +23,12 @@ const FashionProductModal = ({
 }: FashionProductModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl h-auto max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
+      <DialogContent className="max-w-7xl w-[95vw] h-auto max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
         <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/80 dark:bg-black/80 p-2 backdrop-blur-sm hover:bg-white dark:hover:bg-black transition-all">
           <Icon name="X" className="h-6 w-6" />
         </DialogClose>
 
-        <div className="grid md:grid-cols-2 gap-8 p-8">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 p-4 md:p-8">
           <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-2xl">
             <img
               src={product.image}
@@ -42,7 +42,7 @@ const FashionProductModal = ({
             )}
           </div>
 
-          <div className="flex flex-col justify-center space-y-8 pr-8">
+          <div className="flex flex-col justify-center space-y-4 md:space-y-8 pr-0 md:pr-8">
             <div>
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-sm font-bold tracking-widest text-primary uppercase">
@@ -53,42 +53,42 @@ const FashionProductModal = ({
                 </Badge>
               </div>
               
-              <h2 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+              <h2 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-3 md:mb-6">
                 {product.name}
               </h2>
               
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-base md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                 {product.description}
               </p>
             </div>
 
-            <div className="space-y-4 py-8 border-y border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <div className="space-y-3 md:space-y-4 py-4 md:py-8 border-y border-gray-200 dark:border-gray-700">
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">
                 Характеристики
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="flex items-center gap-2 md:gap-3 text-sm md:text-base text-gray-700 dark:text-gray-300">
                   <Icon name="Ruler" className="h-5 w-5 text-primary" />
                   <span className="font-medium">{product.power}</span>
                 </div>
-                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-2 md:gap-3 text-sm md:text-base text-gray-700 dark:text-gray-300">
                   <Icon name="Package" className="h-5 w-5 text-primary" />
                   <span className="font-medium">{product.voltage}</span>
                 </div>
-                <div className="flex items-center gap-3 text-base text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-2 md:gap-3 text-sm md:text-base text-gray-700 dark:text-gray-300">
                   <Icon name="Shirt" className="h-5 w-5 text-primary" />
                   <span className="font-medium">{product.weight}</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-green-600 dark:text-green-400">
+                <div className="flex items-center gap-2 md:gap-3 text-xs md:text-sm text-green-600 dark:text-green-400">
                   <Icon name="Check" className="h-5 w-5" />
                   <span className="font-medium">Premium качество</span>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-baseline gap-4">
-                <span className="text-5xl font-bold text-gray-900 dark:text-white">
+            <div className="space-y-4 md:space-y-6">
+              <div className="flex items-baseline gap-2 md:gap-4">
+                <span className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white">
                   {product.price.toLocaleString()} ₽
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -104,7 +104,7 @@ const FashionProductModal = ({
                   }}
                   disabled={!product.inStock}
                   size="lg"
-                  className="flex-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 py-6 text-base font-semibold uppercase tracking-wider"
+                  className="flex-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 py-4 md:py-6 text-sm md:text-base font-semibold uppercase tracking-wider"
                 >
                   <Icon name="ShoppingCart" className="mr-2 h-5 w-5" />
                   Добавить в корзину
@@ -114,7 +114,7 @@ const FashionProductModal = ({
                   variant="outline"
                   size="lg"
                   onClick={() => onToggleFavorite(product)}
-                  className={`px-6 py-6 ${
+                  className={`px-4 md:px-6 py-4 md:py-6 ${
                     isInFavorites 
                       ? 'bg-red-500 text-white hover:bg-red-600 border-red-500' 
                       : 'hover:bg-white/10'
@@ -127,16 +127,16 @@ const FashionProductModal = ({
                 </Button>
               </div>
 
-              <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <div className="flex items-center gap-3">
+              <div className="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-2 md:gap-3">
                   <Icon name="Truck" className="h-5 w-5" />
                   <span>Бесплатная доставка по Москве</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 md:gap-3">
                   <Icon name="RotateCcw" className="h-5 w-5" />
                   <span>Возврат в течение 14 дней</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 md:gap-3">
                   <Icon name="Shield" className="h-5 w-5" />
                   <span>Гарантия подлинности</span>
                 </div>
