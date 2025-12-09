@@ -23,20 +23,20 @@ const FashionProductModal = ({
 }: FashionProductModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl w-[95vw] h-auto max-h-[90vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
-        <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/80 dark:bg-black/80 p-2 backdrop-blur-sm hover:bg-white dark:hover:bg-black transition-all">
-          <Icon name="X" className="h-6 w-6" />
+      <DialogContent className="max-w-7xl w-[calc(100vw-2rem)] max-w-[95vw] h-auto max-h-[95vh] overflow-y-auto p-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-none">
+        <DialogClose className="absolute right-2 top-2 md:right-4 md:top-4 z-50 rounded-full bg-white/80 dark:bg-black/80 p-1.5 md:p-2 backdrop-blur-sm hover:bg-white dark:hover:bg-black transition-all">
+          <Icon name="X" className="h-5 w-5 md:h-6 md:w-6" />
         </DialogClose>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-8 p-4 md:p-8">
-          <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-2xl">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-8 p-3 md:p-8">
+          <div className="relative aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden shadow-2xl">
             <img
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover"
             />
             {!product.inStock && (
-              <Badge variant="destructive" className="absolute top-4 right-4 shadow-lg text-base px-4 py-2">
+              <Badge variant="destructive" className="absolute top-2 right-2 md:top-4 md:right-4 shadow-lg text-xs md:text-base px-2 py-1 md:px-4 md:py-2">
                 Нет в наличии
               </Badge>
             )}
@@ -44,11 +44,11 @@ const FashionProductModal = ({
 
           <div className="flex flex-col justify-center space-y-4 md:space-y-8 pr-0 md:pr-8">
             <div>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="text-sm font-bold tracking-widest text-primary uppercase">
+              <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="text-xs md:text-sm font-bold tracking-widest text-primary uppercase">
                   {product.brand}
                 </div>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-[10px] md:text-xs">
                   {product.category}
                 </Badge>
               </div>
